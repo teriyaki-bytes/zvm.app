@@ -13,10 +13,10 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Guide',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
+          { text: 'Installing ZVM', link: '/guide/install' }
         ]
       }
     ],

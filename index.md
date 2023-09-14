@@ -3,16 +3,16 @@
 layout: home
 
 hero:
-  name: "zvm (Zig Version Manager)"
-  text: "Easily install/upgrade between different versions of Zig."
-  tagline: My great project tagline
+  name: "zvm "
+  text: "Zig Version Manager"
+  tagline: Easily install/upgrade between different versions of Zig.
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Getting Started
+      link: /guide/getting-started
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Install
+      link: /guide/install
 
 features:
   - title: Feature A
