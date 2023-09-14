@@ -16,7 +16,9 @@ export default defineConfig({
         text: 'Guide',
         items: [
           { text: 'Getting Started', link: '/guide/getting-started' },
-          { text: 'Installing ZVM', link: '/guide/install' }
+          { text: 'Installing ZVM', link: '/guide/install' },
+          { text: 'How to Use ZVM', link: '/guide/how-to-use' },
+          { text: 'Contributing to ZVM', link: '/guide/contributing' },
         ]
       }
     ],
