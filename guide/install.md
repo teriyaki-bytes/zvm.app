@@ -25,6 +25,7 @@ curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 Then add ZVM's directories to your `$PATH`
 
 ```sh
+
     echo 'echo "# ZVM" >> $HOME/.profile'
     echo 'echo '\''export ZVM_INSTALL="$HOME/.zvm/self"'\'' >> $HOME/.profile'
     echo 'echo '\''export PATH="$PATH:$HOME/.zvm/bin"'\'' >> $HOME/.profile'
