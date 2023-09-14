@@ -27,7 +27,7 @@ Then add ZVM's directories to your `$PATH`
 ```sh
     echo 'echo "# ZVM" >> $HOME/.profile'
     echo 'echo '\''export ZVM_INSTALL="$HOME/.zvm/self"'\'' >> $HOME/.profile'
-    echo 'echo '\''export PATH="$PATH:/home/tristan/.zvm/bin"'\'' >> $HOME/.profile'
+    echo 'echo '\''export PATH="$PATH:$HOME/.zvm/bin"'\'' >> $HOME/.profile'
     echo 'echo '\''export PATH="$PATH:$ZVM_INSTALL/"'\'' >> $HOME/.profile'
 ```
 
