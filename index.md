@@ -15,11 +15,10 @@ hero:
       link: /guide/install
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Install & Switch Between Zig Versions Seamlessly
+    details: Install any version of Zig and toggle between them with simple commands.
+  - title: The Most Portable Version Manager
+    details: ZVM run on every platform Zig can as a static binary. We're there for you anywhere you need to be.
+  - title: Lock your project to a specific Zig version
+    details: Zig's updating all the time. Lock your project's Zig version with ZVM to make it easier for contributors.
 ---
-
