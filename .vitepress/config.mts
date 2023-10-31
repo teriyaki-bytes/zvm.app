@@ -8,8 +8,11 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Install', link: '/guide/install' }
+      { text: 'Install', link: '/guide/install' },
+
     ],
+
+    search: { provider: 'local' },
 
     sidebar: [
       {
@@ -19,6 +22,11 @@ export default defineConfig({
           { text: 'Installing ZVM', link: '/guide/install' },
           { text: 'How to Use ZVM', link: '/guide/how-to-use' },
           { text: 'Contributing to ZVM', link: '/guide/contributing' },
+        ]
+      }, {
+        text: 'Tutorials',
+        items: [
+          { text: "Configure build.zig for C and C++ Projects", link: "/tutorials/zig-build-cpp" }
         ]
       }
     ],
