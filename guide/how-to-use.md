@@ -19,6 +19,11 @@ latest version, use "master".
 # Example
 zvm i master
 ```
+### Install ZLS with ZVM
+ You can now install ZLS with your Zig download! To install ZLS with ZVM, simply pass the `-D=zls` flag with `zvm i`. For example:
+```sh
+zvm i -D=zls master
+```
 
 ## Switch between installed Zig versions
 
