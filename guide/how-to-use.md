@@ -1,24 +1,19 @@
----
-title: How to use ZVM
----
-
-# How to use ZVM
-
 ## Install
 
 ```sh
-zvm install <version>
+zvm install <version> 
 # Or
 zvm i <version>
 ```
 
 Use `install` or `i` to download a specific version of Zig. To install the
-latest version, use "master".
+latest version, use "master". 
 
 ```sh
 # Example
 zvm i master
 ```
+
 ### Install ZLS with ZVM
  You can now install ZLS with your Zig download! To install ZLS with ZVM, simply pass the `-D=zls` flag with `zvm i`. For example:
 ```sh
@@ -46,6 +41,12 @@ zvm ls
 ```
 
 Use `ls` to list all installed version of Zig.
+
+### List all versions of Zig available
+```sh
+zvm ls --all
+```
+The `--all` flag will list the available verisons of Zig for download. Not the versions locally installed.
 
 ## Uninstall a Zig version
 
@@ -82,10 +83,6 @@ Use `clean` to remove build artifacts (Good if you're on Windows).
 
 ```sh
 zvm version
-# Or
-zvm --version
-# Or
-zvm -v
 ```
 
 Prints the version of ZVM you have installed.
@@ -94,10 +91,7 @@ Prints the version of ZVM you have installed.
 
 ```sh
 zvm help
-# Or
-zvm --help
-# Or
-zvm -h
+
 ```
 
 <hr>
@@ -105,5 +99,6 @@ zvm -h
 ## Option flags
 
 ```sh
---color # Takes a bool argument to toggle colors.
+-color # Turn ANSI color printing on or off for ZVM's output, i.e. -color=true
 ```
+
