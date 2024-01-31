@@ -105,7 +105,5 @@ zvm -h
 ## Option flags
 
 ```sh
---nocolor, --nocolour   # Turns off ANSI color.
---color, --colour       # Toggles ANSI color.
---yescolor, --yescolour # Turns on ANSI color.
+--color # Takes a bool argument to toggle colors.
 ```
