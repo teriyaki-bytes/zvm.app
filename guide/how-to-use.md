@@ -7,7 +7,7 @@ zvm i <version>
 ```
 
 Use `install` or `i` to download a specific version of Zig. To install the
-latest version, use "master". 
+latest version, use "master".
 
 ```sh
 # Example
@@ -15,7 +15,10 @@ zvm i master
 ```
 
 ### Install ZLS with ZVM
- You can now install ZLS with your Zig download! To install ZLS with ZVM, simply pass the `-D=zls` flag with `zvm i`. For example:
+
+You can now install ZLS with your Zig download! To install ZLS with ZVM, simply
+pass the `-D=zls` flag with `zvm i`. For example:
+
 ```sh
 zvm i -D=zls master
 ```
@@ -43,10 +46,13 @@ zvm ls
 Use `ls` to list all installed version of Zig.
 
 ### List all versions of Zig available
+
 ```sh
 zvm ls --all
 ```
-The `--all` flag will list the available verisons of Zig for download. Not the versions locally installed.
+
+The `--all` flag will list the available verisons of Zig for download. Not the
+versions locally installed.
 
 ## Uninstall a Zig version
 
@@ -91,14 +97,17 @@ Prints the version of ZVM you have installed.
 
 ```sh
 zvm help
-
 ```
 
 <hr>
 
-## Option flags
+### Version Map Source
 
 ```sh
--color # Turn ANSI color printing on or off for ZVM's output, i.e. -color=true
-```
+-vmu="https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for self-hosted Zig CDNs.
+                                       # ZVM only supports schemas that match the offical version map schema. 
+                                       # Run `-vmu=default` to reset your version map.
 
+-vmu default # Resets back to default Zig releases.
+-vmu mach # Sets ZVM to pull from Mach nominated Zig.
+```
