@@ -104,7 +104,7 @@ zvm help
 ### Version Map Source
 
 ```sh
--vmu="https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for self-hosted Zig CDNs.
+-vmu="https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for                                      self-hosted Zig CDNs.
                                        # ZVM only supports schemas that match the offical version map schema. 
                                        # Run `-vmu=default` to reset your version map.
 
