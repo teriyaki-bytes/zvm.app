@@ -33,7 +33,17 @@ echo export PATH="$PATH:$ZVM_INSTALL/" >> $HOME/.profile
 
 # Windows
 
-If you're on Windows, please grab the
+## PowerShell
+ ```ps1
+ irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex
+ ```
+## Command Prompt
+```cmd
+powershell -c "irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex"
+```
+## Manually
+
+Please grab the
 [latest release](https://github.com/tristanisham/zvm/releases/latest).
 
 ## Putting ZVM on your Path
