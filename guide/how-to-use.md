@@ -89,6 +89,7 @@ Use `clean` to remove build artifacts (Good if you're on Windows).
 
 ```sh
 zvm version
+zvm --version
 ```
 
 Prints the version of ZVM you have installed.
