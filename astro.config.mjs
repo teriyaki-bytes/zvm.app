@@ -5,7 +5,7 @@ import starlight from '@astrojs/starlight';
 export default defineConfig({
 	integrations: [
 		starlight({
-			title: 'ZVM',
+			title: 'zvm (Zig Version Manager)',
 			social: {
 				github: 'https://github.com/tristanisham/zvm',
 				twitter: 'https://twitter.com/atalocke',
