@@ -1,0 +1,38 @@
+---
+title: Zig Version Manager
+description: zvm (Zig Version Manager) lets you easily install/upgrade between different versions of Zig.
+template: splash
+hero:
+  tagline: Easily install/upgrade between different versions of Zig.
+  image:
+    file: ../../assets/zvm400x400.webp
+  actions:
+    - text: Getting Started
+      link: /guides/install-zvm/
+      icon: right-arrow
+      variant: primary
+    - text: Read the ZVM docs
+      link: /reference/getting-started
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Install & Switch Between Zig Versions Seamlessly" icon="pencil">
+		Install any version of [Zig](https://ziglang.org/) or [Mach Zig](https://machengine.org/) and seamlessly switch between them.
+	</Card>
+	<Card title="Install Zig Anywhere" icon="add-document">
+		`zvm` is a static single binary you can [run on almost anything](reference/supported-platforms.md). 
+	</Card>
+	<Card title="Lock your project to a specific Zig version" icon="setting">
+		Zig's updating all the time. Lock your project's Zig version with ZVM to make it easier for contributors.
+	</Card>
+	<Card title="Read the docs" icon="open-book">
+		Learn more in [the ZVM Docs](reference/getting-started.md).
+	</Card>
+</CardGrid>
+
+
