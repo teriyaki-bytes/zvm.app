@@ -3,7 +3,6 @@ title: How to Use ZVM
 description: A list of ZVM's commands, flags, and environment variable. As well as how to use them.
 ---
 
-
 ## Install
 
 ```sh
@@ -94,42 +93,35 @@ Use `clean` to remove build artifacts (Good if you're on Windows).
 ### Version Map Source
 
 ```sh
-<<<<<<< HEAD:guide/how-to-use.md
-vmu "https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for self-hosted Zig CDNs.
-                                       # ZVM only supports schemas that match the offical version map schema. 
-                                       # Run `vmu default` to reset your version map.
-=======
-zvm version
-zvm --version
-```
->>>>>>> 75317d1701fb39b96df5447631fd41dcaa24ced0:src/content/docs/reference/how-to-use.md
-
-vmu default # Resets back to default Zig releases.
-vmu mach # Sets ZVM to pull from Mach nominated Zig.
+zvm vmu <Version Map URL>
 ```
 
+vmu default # Resets back to default Zig releases. vmu mach # Sets ZVM to pull
+from Mach nominated Zig.
+
+````
 ## Print program help
 
 ```sh
 zvm help
-```
+````
 
 ## Print program version
 
 ```sh
 zvm --version
 ```
+
 Prints the version of ZVM you have installed.
 
 <hr>
-
-### Version Map Source
 
 ### Color Toggle
 
 Enable or disable colored ZVM output. No value toggles colors.
 
 #### Enable
+
 - on
 - yes/y
 - enabled
@@ -142,16 +134,13 @@ Enable or disable colored ZVM output. No value toggles colors.
 - disabled
 - false
 
-
 ```sh
-<<<<<<< HEAD:guide/how-to-use.md
 --color # Toggle ANSI color printing on or off for ZVM's output, i.e. --color=true
-=======
--vmu="https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for                                      self-hosted Zig CDNs.
-                                       # ZVM only supports schemas that match the offical version map schema. 
-                                       # Run `-vmu=default` to reset your version map.
-
--vmu default # Resets back to default Zig releases.
--vmu mach # Sets ZVM to pull from Mach nominated Zig.
->>>>>>> 75317d1701fb39b96df5447631fd41dcaa24ced0:src/content/docs/reference/how-to-use.md
 ```
+
+## Environment Variables
+
+- `ZVM_DEBG` enables DEBUG logging for your executable. This is meant for
+  contributors and developers.
+- `ZVM_SET_CU` Toggle the automatic upgrade checker. If you want to reenable the
+  checker, just `uset ZVM_SET_CU`.
