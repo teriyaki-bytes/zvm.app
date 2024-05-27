@@ -1,13 +1,9 @@
----
-title: How to use ZVM
----
-
-# How to use ZVM
+ How to use ZVM
 
 ## Install
 
 ```sh
-zvm install <version>
+zvm install <version> 
 # Or
 zvm i <version>
 ```
@@ -18,6 +14,15 @@ latest version, use "master".
 ```sh
 # Example
 zvm i master
+```
+
+### Install ZLS with ZVM
+
+You can now install ZLS with your Zig download! To install ZLS with ZVM, simply
+pass the `--zls` flag with `zvm i`. For example:
+
+```sh
+zvm i --zls master
 ```
 
 ## Switch between installed Zig versions
@@ -41,6 +46,15 @@ zvm ls
 ```
 
 Use `ls` to list all installed version of Zig.
+
+### List all versions of Zig available
+
+```sh
+zvm ls --all
+```
+
+The `--all` flag will list the available verisons of Zig for download. Not the
+versions locally installed.
 
 ## Uninstall a Zig version
 
@@ -73,34 +87,52 @@ zvm clean
 
 Use `clean` to remove build artifacts (Good if you're on Windows).
 
-## Print program version
+### Version Map Source
 
 ```sh
-zvm version
-# Or
-zvm --version
-# Or
-zvm -v
-```
+vmu "https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for self-hosted Zig CDNs.
+                                       # ZVM only supports schemas that match the offical version map schema. 
+                                       # Run `vmu default` to reset your version map.
 
-Prints the version of ZVM you have installed.
+vmu default # Resets back to default Zig releases.
+vmu mach # Sets ZVM to pull from Mach nominated Zig.
+```
 
 ## Print program help
 
 ```sh
 zvm help
-# Or
-zvm --help
-# Or
-zvm -h
 ```
+
+## Print program version
+
+```sh
+zvm --version
+```
+Prints the version of ZVM you have installed.
 
 <hr>
 
 ## Option flags
 
+### Color Toggle
+
+Enable or disable colored ZVM output. No value toggles colors.
+
+#### Enable
+- on
+- yes/y
+- enabled
+- true
+
+#### Disabled
+
+- off
+- no/n
+- disabled
+- false
+
+
 ```sh
---nocolor, --nocolour   # Turns off ANSI color.
---color, --colour       # Toggles ANSI color.
---yescolor, --yescolour # Turns on ANSI color.
+--color # Toggle ANSI color printing on or off for ZVM's output, i.e. --color=true
 ```
