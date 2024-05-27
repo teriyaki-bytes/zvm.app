@@ -65,5 +65,5 @@ Append
 
 ### AUR
 
-`zvm` on the [Arch AUR](https://aur.archlinux.org/packages/zvm) is a community
+ZVM on the [Arch AUR](https://aur.archlinux.org/packages/zvm) is a community
 maintained package, and may be out of date.

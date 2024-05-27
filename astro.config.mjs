@@ -1,11 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import starlightBlog from 'starlight-blog';
 
 // https://astro.build/config
 export default defineConfig({
 	site: "https://www.zvm.app",
 	integrations: [
 		starlight({
+			plugins: [starlightBlog()],
 			title: 'zvm | Zig Version Manager',
 			social: {
 				github: 'https://github.com/tristanisham/zvm',
@@ -26,7 +28,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Reference',
+					label: 'How To',
 					autogenerate: { directory: 'reference' },
 				},
 			],
