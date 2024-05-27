@@ -1,12 +1,8 @@
-<<<<<<< HEAD:guide/how-to-use.md
- How to use ZVM
-=======
 ---
 title: How to Use ZVM
 description: A list of ZVM's commands, flags, and environment variable. As well as how to use them.
 ---
 
->>>>>>> 75317d1701fb39b96df5447631fd41dcaa24ced0:src/content/docs/reference/how-to-use.md
 
 ## Install
 
@@ -27,17 +23,10 @@ zvm i master
 ### Install ZLS with ZVM
 
 You can now install ZLS with your Zig download! To install ZLS with ZVM, simply
-<<<<<<< HEAD:guide/how-to-use.md
-pass the `--zls` flag with `zvm i`. For example:
-
-```sh
-zvm i --zls master
-=======
 pass the `-D=zls` flag with `zvm i`. For example:
 
 ```sh
 zvm i -D=zls master
->>>>>>> 75317d1701fb39b96df5447631fd41dcaa24ced0:src/content/docs/reference/how-to-use.md
 ```
 
 ## Switch between installed Zig versions
