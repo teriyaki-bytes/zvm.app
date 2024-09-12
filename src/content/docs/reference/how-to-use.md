@@ -22,11 +22,12 @@ zvm i master
 ### Install ZLS with ZVM
 
 You can now install ZLS with your Zig download! To install ZLS with ZVM, simply
-pass the `-D=zls` flag with `zvm i`. For example:
+pass the `--zls` flag with `zvm i`. For example:
 
 ```sh
-zvm i -D=zls master
+zvm i --zls master
 ```
+
 
 ## Switch between installed Zig versions
 
@@ -90,16 +91,17 @@ zvm clean
 
 Use `clean` to remove build artifacts (Good if you're on Windows).
 
-### Version Map Source
+## Set Version Map Source
 
 ```sh
-zvm vmu <Version Map URL>
+vmu "https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for self-hosted Zig CDNs.
+                                       # ZVM only supports schemas that match the offical version map schema. 
+                                       # Run `vmu default` to reset your version map.
+
+vmu default # Resets back to default Zig releases.
+vmu mach # Sets ZVM to pull from Mach nominated Zig.
 ```
 
-vmu default # Resets back to default Zig releases. vmu mach # Sets ZVM to pull
-from Mach nominated Zig.
-
-````
 ## Print program help
 
 ```sh
