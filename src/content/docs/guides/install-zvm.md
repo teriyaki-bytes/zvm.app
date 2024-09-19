@@ -21,14 +21,6 @@ executable you've called `upgrade` from.
 ```sh
 curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 ```
-Then add ZVM's directories to your `$PATH`
-
-```sh
-echo "# ZVM" >> $HOME/.profile
-echo export ZVM_INSTALL="$HOME/.zvm/self" >> $HOME/.profile
-echo export PATH="$PATH:$HOME/.zvm/bin" >> $HOME/.profile
-echo export PATH="$PATH:$ZVM_INSTALL/" >> $HOME/.profile
-```
 
 # Windows
 
