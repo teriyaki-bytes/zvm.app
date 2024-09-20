@@ -57,5 +57,4 @@ Append
 
 ### AUR
 
-ZVM on the [Arch AUR](https://aur.archlinux.org/packages/zvm) is a community
-maintained package, and may be out of date.
+ZVM on the [Arch AUR](https://aur.archlinux.org/packages/zvm) is a community-maintained package, and may be out of date.
