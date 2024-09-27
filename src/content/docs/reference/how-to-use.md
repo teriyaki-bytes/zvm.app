@@ -19,6 +19,18 @@ latest version, use "master".
 zvm i master
 ```
 
+### Force Install
+
+As of `v0.7.6` ZVM will now skip downloading a version if it is already installed. You can always force an install with the `--force` or `-f` flag.
+
+```sh
+zvm i --force master
+```
+
+You can also enable the old behavior by setting the new `alwaysForceInstall` field to `true` in
+`~/.zvm/settings.json`.
+
+
 ### Install ZLS with ZVM
 
 You can now install ZLS with your Zig download! To install ZLS with ZVM, simply
