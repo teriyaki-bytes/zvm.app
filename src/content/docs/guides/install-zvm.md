@@ -31,7 +31,15 @@ curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 ## Command Prompt
 ```cmd
 powershell -c "irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex"
+
 ```
+
+# If You Have a Valid Version of Go Installed
+```sh
+go install -ldflags "-s -w" github.com/tristanisham/zvm@latest
+```
+
+
 ## Manually
 
 Please grab the
@@ -40,7 +48,7 @@ Please grab the
 ## Putting ZVM on your Path
 
 ZVM requires a few directories to be on your `$PATH`. If you don't know how to
-update your environment variables perminantly on Windows, you can follow
+update your environment variables permanently on Windows, you can follow
 [this guide](https://www.computerhope.com/issues/ch000549.htm). Once you're in
 the appropriate menu, add or append to the following environment variables:
 
