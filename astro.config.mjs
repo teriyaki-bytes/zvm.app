@@ -9,11 +9,19 @@ export default defineConfig({
 		starlight({
 			plugins: [starlightBlog()],
 			title: 'zvm | Zig Version Manager',
-			social: {
-				github: 'https://github.com/tristanisham/zvm',
-				twitter: 'https://twitter.com/atalocke',
-				
-			},
+			social: [
+				{
+					icon: "github",
+					label: "Source Code",
+					href: "https://github.com/tristanisham/zvm"
+				},
+				{
+					icon: 'twitter',
+					label: 'Twitter',
+					href: 'https://x.com/atalocke'
+				}
+			],
+
 			logo: {
 				light: './src/assets/zvm-text-logo-light.png',
 				dark: './src/assets/zvm-text-logo-dark.png',
