@@ -13,11 +13,11 @@ ZVM is developed for a wide range of operating systems and architectures.
 
 ## Operating System
 
-- windows
-- linux
-- darwin
-- freebsd
-- netbsd
-- openbsd
-- plan9
-- solaris
+- Windows
+- Linux
+- Darwin (macOS)
+- FreeBSD
+- NetBSD
+- OpenBSD
+- Plan 9
+- Solaris
