@@ -1,0 +1,83 @@
+---
+// Logo carousel for supported platforms - fades between logos one at a time
+const logos = [
+  { name: 'Linux', src: '/logos/linux.svg', invert: false },
+  { name: 'Windows', src: '/logos/windows.svg', invert: false },
+  { name: 'macOS', src: '/logos/apple.svg', invert: false },
+  { name: 'FreeBSD', src: '/logos/freebsd.svg', invert: false },
+  { name: 'OpenBSD', src: '/logos/openbsd.svg', invert: true },
+  { name: 'Solaris', src: '/logos/solaris.svg', invert: false },
+  { name: 'Plan 9', src: '/logos/plan9.svg', alt: 'Plan 9 - By Renee French - Vectorized from https://9p.io/plan9/img/spaceglenda300.jpg by VectorVoyager, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=116220075', invert: true },
+];
+---
+
+<div class="logo-carousel">
+  {logos.map((logo, index) => (
+    <div class={`logo-slide ${index === 0 ? 'active' : ''} ${logo.invert ? 'invert' : ''}`} data-index={index}>
+      <img src={logo.src} alt={logo.alt || logo.name} />
+      <span class="logo-name">{logo.name}</span>
+    </div>
+  ))}
+</div>
+
+<style>
+  .logo-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    height: 80px;
+    position: relative;
+  }
+
+  .logo-slide {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .logo-slide.active {
+    opacity: 1;
+  }
+
+  .logo-slide img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .logo-slide.invert img {
+    filter: brightness(0) invert(1);
+  }
+
+  .logo-name {
+    font-size: 0.85rem;
+    color: var(--sl-color-gray-3);
+  }
+</style>
+
+<script>
+  function initLogoCarousel() {
+    const carousels = document.querySelectorAll('.logo-carousel');
+
+    carousels.forEach(carousel => {
+      const slides = carousel.querySelectorAll('.logo-slide');
+      if (slides.length === 0) return;
+
+      let currentIndex = 0;
+
+      setInterval(() => {
+        slides[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add('active');
+      }, 2500);
+    });
+  }
+
+  initLogoCarousel();
+  document.addEventListener('astro:after-swap', initLogoCarousel);
+</script>

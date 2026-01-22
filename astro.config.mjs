@@ -33,6 +33,7 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Install ZVM', link: '/guides/install-zvm/' },
+						{ label: 'Configuring Settings', link: '/guides/configuring-settings/' },
 					],
 				},
 				{

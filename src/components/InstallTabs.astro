@@ -1,0 +1,253 @@
+---
+// OS-detecting install script tabs component
+const tabs = [
+  {
+    id: 'bash',
+    label: 'Bash',
+    command: 'curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash',
+    scriptUrl: 'https://github.com/tristanisham/zvm/blob/master/install.sh',
+  },
+  {
+    id: 'pwsh',
+    label: 'PowerShell',
+    command: 'irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex',
+    scriptUrl: 'https://github.com/tristanisham/zvm/blob/master/install.ps1',
+  },
+  {
+    id: 'cmd',
+    label: 'CMD',
+    command: 'powershell -c "irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex"',
+    scriptUrl: 'https://github.com/tristanisham/zvm/blob/master/install.ps1',
+  },
+  {
+    id: 'go',
+    label: 'Go',
+    command: 'go install -ldflags "-s -w" github.com/tristanisham/zvm@latest',
+    scriptUrl: null,
+  },
+];
+---
+
+<div class="install-tabs">
+  <div class="tab-buttons" role="tablist">
+    {tabs.map((tab, index) => (
+      <button
+        role="tab"
+        class="tab-button"
+        data-tab={tab.id}
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-controls={`panel-${tab.id}`}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  <div class="tab-panels">
+    {tabs.map((tab, index) => (
+      <div
+        role="tabpanel"
+        id={`panel-${tab.id}`}
+        class="tab-panel"
+        data-panel={tab.id}
+        hidden={index !== 0}
+      >
+        <div class="code-block">
+          <span class="prompt">$</span>
+          <code class="command">{tab.command}</code>
+          <button class="copy-button" data-command={tab.command} aria-label="Copy to clipboard">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+{tab.scriptUrl && (
+          <a href={tab.scriptUrl} class="view-script" target="_blank" rel="noopener noreferrer">
+            View install script →
+          </a>
+        )}
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .install-tabs {
+    max-width: 700px;
+    margin: 2rem auto;
+  }
+
+  .tab-buttons {
+    display: flex;
+    align-items: flex-end;
+    gap: 0;
+    border-bottom: 2px solid var(--sl-color-gray-5);
+  }
+
+  .tab-button {
+    background: transparent;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s ease;
+  }
+
+  .tab-button:hover {
+    color: var(--sl-color-white);
+  }
+
+  .tab-button[aria-selected='true'] {
+    color: var(--sl-color-white);
+  }
+
+  .tab-button[aria-selected='true']::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--sl-color-accent);
+  }
+
+  .tab-panel {
+    padding-top: 1rem;
+  }
+
+  .code-block {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #1a1a2e;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+  }
+
+  .prompt {
+    color: rgba(255, 255, 255, 0.4);
+    flex-shrink: 0;
+  }
+
+  .command {
+    color: #a3ff85;
+    white-space: nowrap;
+    flex-grow: 1;
+  }
+
+  .copy-button {
+    background: transparent;
+    border: none;
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .copy-button:hover {
+    color: var(--sl-color-white);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .copy-button.copied {
+    color: #a3ff85;
+  }
+
+  .view-script {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--sl-color-accent);
+    text-decoration: none;
+  }
+
+  .view-script:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 600px) {
+    .code-block {
+      font-size: 0.8rem;
+      padding: 0.875rem 1rem;
+    }
+
+    .tab-button {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .command {
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+  }
+</style>
+
+<script>
+  function initInstallTabs() {
+    const tabButtons = document.querySelectorAll<HTMLButtonElement>('.tab-button');
+    const tabPanels = document.querySelectorAll('.tab-panel') as NodeListOf<HTMLElement>;
+    const copyButtons = document.querySelectorAll<HTMLButtonElement>('.copy-button');
+
+    // OS detection - default to bash, switch to pwsh on Windows
+    function detectOS(): string {
+      const userAgent = navigator.userAgent.toLowerCase();
+      if (userAgent.includes('win')) {
+        return 'pwsh';
+      }
+      return 'bash';
+    }
+
+    // Switch to detected OS tab
+    function switchToTab(tabId: string) {
+      tabButtons.forEach(btn => {
+        const isSelected = btn.getAttribute('data-tab') === tabId;
+        btn.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+      });
+
+      tabPanels.forEach(panel => {
+        const isActive = panel.getAttribute('data-panel') === tabId;
+        panel.hidden = !isActive;
+      });
+    }
+
+    // Set initial tab based on OS
+    const detectedOS = detectOS();
+    switchToTab(detectedOS);
+
+    // Tab click handlers
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        if (tabId) switchToTab(tabId);
+      });
+    });
+
+    // Copy button handlers
+    copyButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        const command = button.getAttribute('data-command');
+        if (command) {
+          await navigator.clipboard.writeText(command);
+          button.classList.add('copied');
+          setTimeout(() => button.classList.remove('copied'), 2000);
+        }
+      });
+    });
+  }
+
+  // Run on initial load
+  initInstallTabs();
+
+  // Re-run on Astro page transitions
+  document.addEventListener('astro:after-swap', initInstallTabs);
+</script>
