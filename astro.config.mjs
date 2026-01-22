@@ -40,6 +40,9 @@ export default defineConfig({
 					autogenerate: { directory: 'reference' },
 				},
 			],
+			components: {
+				Head: './src/layouts/PostHogLayout.astro',
+			},
 		}),
 	],
 });

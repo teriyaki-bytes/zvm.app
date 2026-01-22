@@ -16,13 +16,13 @@ If you don't want to use ZVM_INSTALL (like you already have ZVM in a place you
 like), then ZVM will update the exact
 executable you've called `upgrade` from.
 
-# Linux, BSD, macOS, *nix
+## Linux, BSD, macOS, *nix
 
 ```sh
 curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 ```
 
-# Windows
+## Windows
 
 ## PowerShell
  ```ps1
@@ -34,7 +34,7 @@ powershell -c "irm https://raw.githubusercontent.com/tristanisham/zvm/master/ins
 
 ```
 
-# If You Have a Valid Version of Go Installed
+## Go
 ```sh
 go install -ldflags "-s -w" github.com/tristanisham/zvm@latest
 ```
@@ -61,7 +61,7 @@ Append
 - PATH: C:\Users\\`%YOUR_USERNAME_HERE%`\\.zvm\bin
 - PATH: $ZVM_INSTALL/
 
-## Community Package
+## Community Packages
 
 ### AUR
 
