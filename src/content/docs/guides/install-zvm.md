@@ -24,11 +24,11 @@ curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 
 ## Windows
 
-## PowerShell
+### PowerShell
  ```ps1
  irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex
  ```
-## Command Prompt
+### Command Prompt
 ```cmd
 powershell -c "irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex"
 

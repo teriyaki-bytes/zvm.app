@@ -3,7 +3,7 @@ title: Run Command
 description: How to run a specific Zig version without switching your default.
 ---
 
-If you want to run a version of Zig without setting it as your default, the new
+If you want to run a version of Zig without setting it as your default, the
 `run` command is your friend.
 
 ```sh
@@ -26,7 +26,7 @@ Make sure you switch your VMU before using `run`.
 
 ```sh
 zvm vmu zig mach
-run mach-latest version
+zvm run mach-latest version
 # 0.14.0-dev.1911+3bf89f55c
 ```
 
