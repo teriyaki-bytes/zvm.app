@@ -35,6 +35,7 @@ const tabs = [
         role="tab"
         class="tab-button"
         data-tab={tab.id}
+        data-ph-event={`tab_${tab.id}`}
         aria-selected={index === 0 ? 'true' : 'false'}
         aria-controls={`panel-${tab.id}`}
       >
@@ -55,7 +56,12 @@ const tabs = [
         <div class="code-block">
           <span class="prompt">$</span>
           <code class="command">{tab.command}</code>
-          <button class="copy-button" data-command={tab.command} aria-label="Copy to clipboard">
+          <button
+            class="copy-button"
+            data-command={tab.command}
+            aria-label="Copy to clipboard"
+            data-ph-event={`copy_command_${tab.id}`}
+          >
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
               <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -63,7 +69,13 @@ const tabs = [
           </button>
         </div>
 {tab.scriptUrl && (
-          <a href={tab.scriptUrl} class="view-script" target="_blank" rel="noopener noreferrer">
+          <a
+            href={tab.scriptUrl}
+            class="view-script"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-ph-event={`view_script_${tab.id}`}
+          >
             View install script →
           </a>
         )}

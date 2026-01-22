@@ -46,3 +46,41 @@
     persistence: 'localStorage',
   });
 </script>
+
+<script is:inline id="posthog-events">
+  (function() {
+    function safeCapture(event, props) {
+      try {
+        if (window.posthog && typeof window.posthog.capture === 'function') {
+          window.posthog.capture(event, props);
+        }
+      } catch (_) {
+        /* fail silently */
+      }
+    }
+
+    let listenerAttached = false;
+    function attachListener() {
+      if (listenerAttached) return;
+      listenerAttached = true;
+      document.addEventListener(
+        'click',
+        (evt) => {
+          const target = evt.target.closest('[data-ph-event]');
+          if (!target) return;
+          const name = target.getAttribute('data-ph-event');
+          const props = {
+            href: target.getAttribute('href') || undefined,
+            text: target.textContent?.trim().slice(0, 80) || undefined,
+            id: target.id || undefined,
+          };
+          safeCapture(name, props);
+        },
+        true
+      );
+    }
+
+    attachListener();
+    document.addEventListener('astro:after-swap', attachListener);
+  })();
+</script>
