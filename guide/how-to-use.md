@@ -45,7 +45,7 @@ zvm use master
 zvm ls
 ```
 
-Use `ls` to list all installed version of Zig.
+Use `ls` to list all installed versions of Zig.
 
 ### List all versions of Zig available
 
@@ -53,7 +53,7 @@ Use `ls` to list all installed version of Zig.
 zvm ls --all
 ```
 
-The `--all` flag will list the available verisons of Zig for download. Not the
+The `--all` flag will list the available versions of Zig for download. Not the
 versions locally installed.
 
 ## Uninstall a Zig version
@@ -75,7 +75,7 @@ zvm upgrade
 ```
 
 The latest version of ZVM should install on your machine, regardless of where
-your binary lives (though if you have your binary in a privaledged folder, you
+your binary lives (though if you have your binary in a privileged folder, you
 may have to run this command with `sudo`).
 
 ## Clean up build artifacts
@@ -91,7 +91,7 @@ Use `clean` to remove build artifacts (Good if you're on Windows).
 
 ```sh
 vmu "https://validurl.local/vmu.json" # Change the source ZVM pulls Zig release information from. Good for self-hosted Zig CDNs.
-                                       # ZVM only supports schemas that match the offical version map schema. 
+                                       # ZVM only supports schemas that match the official version map schema. 
                                        # Run `vmu default` to reset your version map.
 
 vmu default # Resets back to default Zig releases.

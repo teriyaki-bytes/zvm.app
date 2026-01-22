@@ -11,7 +11,7 @@ zvm upgrade
 ```
 
 The latest version of ZVM should install on your machine, regardless of where
-your binary lives (though if you have your binary in a privaledged folder, you
+your binary lives (though if you have your binary in a privileged folder, you
 may have to run this command with `sudo`).
 
 ## Clean up build artifacts

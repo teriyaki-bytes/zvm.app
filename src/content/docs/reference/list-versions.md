@@ -8,7 +8,7 @@ description: How to list installed and available Zig versions using ZVM.
 zvm ls
 ```
 
-Use `ls` to list all installed version of Zig.
+Use `ls` to list all installed versions of Zig.
 
 ## List all versions of Zig available
 
@@ -16,7 +16,7 @@ Use `ls` to list all installed version of Zig.
 zvm ls --all
 ```
 
-The `--all` flag will list the available verisons of Zig for download. Not the
+The `--all` flag will list the available versions of Zig for download. Not the
 versions locally installed.
 
 ## List set version maps

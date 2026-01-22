@@ -5,15 +5,15 @@ description: How to configure custom version map sources and mirror servers for 
 
 ## Set Version Map Source
 
-ZVM lets choose your vendor for Zig and ZLS. This is great if your company hosts
-it's own internal fork of Zig, you prefer a different flavor of the language,
+ZVM lets you choose your vendor for Zig and ZLS. This is great if your company hosts
+its own internal fork of Zig, you prefer a different flavor of the language,
 like Mach.
 
 ```sh
 zvm vmu zig "https://machengine.org/zig/index.json" # Change the source ZVM pulls Zig release information from.
 
 zvm vmu zls https://validurl.local/vmu.json
-                                       # ZVM only supports schemas that match the offical version map schema.
+                                       # ZVM only supports schemas that match the official version map schema.
                                        # Run `vmu default` to reset your version map.
 
 zvm vmu zig default # Resets back to default Zig releases.

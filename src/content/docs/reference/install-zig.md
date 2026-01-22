@@ -49,5 +49,5 @@ with `zvm i --zls`. For example:
 zvm i --zls --full master
 ```
 
-> [!IMPORTANT]
-> This does not apply to tagged releases, e.g.: `0.13.0`
+
+**This does not apply to tagged releases, e.g.: `0.13.0`**
