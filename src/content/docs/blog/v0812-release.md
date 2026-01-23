@@ -4,7 +4,7 @@ date: 2026-01-22
 draft: false
 ---
 
-Today I'm publishing v0.8.12 of ZVM. First, I want to thank [Vladimir Petrigo](https://github.com/vpetrigo), [Jack Parsons](https://github.com/jackparsonss), and [David James](https://github.com/xpe).
+Today I'm publishing v0.8.12 of ZVM. I want to thank [Vladimir Petrigo](https://github.com/vpetrigo), [Jack Parsons](https://github.com/jackparsonss), and [David James](https://github.com/xpe).
 
 Vladimir is the latest in a long line of contributors to tackle the evergreen issue of linking files on Windows.
 
