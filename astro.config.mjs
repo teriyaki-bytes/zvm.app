@@ -33,6 +33,8 @@ export default defineConfig({
 					items: [
 						// Each item here is one entry in the navigation menu.
 						{ label: 'Install ZVM', link: '/guides/install-zvm/' },
+						{ label: 'Use ZLS with ZVM in VSCode', link: '/guides/setup-zls-with-zvm' },
+
 					],
 				},
 				{
