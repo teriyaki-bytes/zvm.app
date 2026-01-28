@@ -3,8 +3,8 @@ title: Upgrade ZVM
 description: How to upgrade your ZVM installation and clean up build artifacts.
 ---
 
-As of `zvm v0.2.3` you can now upgrade your `zvm` installation from, well, `zvm`.
-Just run:
+As of `zvm v0.2.3` you can now upgrade your `zvm` installation from, well,
+`zvm`. Just run:
 
 ```sh
 zvm upgrade
