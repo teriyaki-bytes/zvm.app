@@ -18,7 +18,7 @@ like), then ZVM will update the exact executable you've called `upgrade` from.
 ## Linux, BSD, macOS, *nix
 
 ```sh
-curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
+curl https://www.zvm.app/install.sh | bash
 ```
 
 ## Windows
@@ -26,13 +26,13 @@ curl https://raw.githubusercontent.com/tristanisham/zvm/master/install.sh | bash
 ### PowerShell
 
 ```ps1
-irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex
+irm https://www.zvm.app/install.ps1 | iex
 ```
 
 ### Command Prompt
 
 ```cmd
-powershell -c "irm https://raw.githubusercontent.com/tristanisham/zvm/master/install.ps1 | iex"
+powershell -c "irm https://www.zvm.app/install.ps1 | iex"
 ```
 
 ## Go
