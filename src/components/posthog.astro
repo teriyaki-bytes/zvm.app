@@ -7,9 +7,9 @@
   if (!(window).posthogInitialized) {
     posthog.init('phc_pmCPcYSLQqv06mndbli5nhdgbrkYarDNK1m6iPqqTo2', {
       api_host: 'https://us.i.posthog.com',
-      defaults: '2025-11-30',
       capture_pageview: true,
       autocapture: true,
+      persistence: 'localStorage+cookie',
     });
     (window).posthogInitialized = true;
   }
