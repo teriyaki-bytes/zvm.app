@@ -12,13 +12,13 @@ documentation framework.
 
 ## Development Commands
 
-This project uses **pnpm** (not npm):
+This project uses **bun**:
 
 ```bash
-pnpm install          # Install dependencies
-pnpm run dev          # Start dev server at localhost:4321
-pnpm run build        # Type-check and build to ./dist/
-pnpm run preview      # Preview production build locally
+bun install          # Install dependencies
+bun run dev          # Start dev server at localhost:4321
+bun run build        # Type-check and build to ./dist/
+bun run preview      # Preview production build locally
 ```
 
 ## Architecture
