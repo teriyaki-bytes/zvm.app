@@ -2,5 +2,12 @@
 import DefaultHead from '@astrojs/starlight/components/Head.astro';
 import PostHog from '../components/posthog.astro';
 ---
-<DefaultHead />
-<PostHog />
+<html>
+  <head>
+    <DefaultHead />
+    <PostHog />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

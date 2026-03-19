@@ -1,10 +1,9 @@
 ---
 title: Supported Platforms
-description: A list of platforms ZVM can run on. 
+description: A list of platforms ZVM can run on.
 ---
 
-ZVM is developed for a wide range of operating systems and architectures. 
-
+ZVM is developed for a wide range of operating systems and architectures.
 
 ## Architecture
 
