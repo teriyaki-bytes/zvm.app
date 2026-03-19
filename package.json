@@ -10,12 +10,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/starlight": "^0.36.3",
-    "astro": "^5.16.4",
-    "posthog-js": "^1.334.1",
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/starlight": "^0.38.1",
+    "astro": "^6.0.7",
+    "posthog-js": "^1.362.0",
     "sharp": "^0.34.5",
-    "starlight-blog": "^0.24.3",
+    "starlight-blog": "^0.26.1",
     "typescript": "^5.9.3"
   },
   "packageManager": "pnpm@9.0.2+sha256.d6fc013639b81658ff175829ebb9435bcb89eff206769e460fd3ae27c2054df6"
