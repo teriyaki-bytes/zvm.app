@@ -12,14 +12,20 @@ your binary lives (though if you have your binary in a privileged folder, you
 may have to run this command with `sudo`).
 
 # Install via a package manager
-If you have installed ZVM via a package manager, your system's maintainer may have compiled ZVM without its default upgrade behavior. The maintainer should have customized the ZVM binary so that it prints how to upgrade itself.
+ZVM can also be built without its auto upgrader (`zvm upgrade`). 
+This is to make installing ZVM via a package manager easier for those who prefer this method.
+
+When you run a build of ZVM with the autoupgrader disabled, you will see a builder-specified message.
+
+![Builder Message](../../../assets/builder-msg-example.png)
 
 ```go
 
 go build -ldflags=-w -s -X 'main.BuildUpgradeMessage=Command to upgrade ZVM goes here.'
 ```
 
-Try using your system's package manager.
+
+Remember, ZVM is an open source project. Anyone can customize and distribute it. 
 
 ## Clean up build artifacts
 
