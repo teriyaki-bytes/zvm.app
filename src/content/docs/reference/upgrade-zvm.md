@@ -14,6 +14,10 @@ may have to run this command with `sudo`).
 # Install via a package manager
 If you have installed ZVM via a package manager, your system's maintainer may have compiled ZVM without its default upgrade behavior. The maintainer should have customized the ZVM binary so that it prints how to upgrade itself.
 
+```go
+
+go build -ldflags=-w -s -X 'main.BuildUpgradeMessage=Command to upgrade ZVM goes here.'
+```
 
 Try using your system's package manager.
 
