@@ -21,6 +21,13 @@ it for its operation.
   Toggle off verifying TLS by setting this environment variable.
   - By default when this is enabled ZVM will print a warning. Set this variable
     to `no-warn` to silence this warning.
+- `ZVM_TARGET_OS` overrides the OS ZVM downloads binaries for. Equivalent to
+  the `--target-os` flag. Case-insensitive; accepts Go-style (`linux`,
+  `darwin`) or Zig-style (`linux`, `macos`) names. See
+  [Cross-target installs](/reference/install-zig/#cross-target-installs).
+- `ZVM_TARGET_ARCH` overrides the CPU architecture ZVM downloads binaries
+  for. Equivalent to `--target-arch`. Case-insensitive; accepts `amd64` /
+  `x86_64` and `arm64` / `aarch64`.
 
 ## Option Flags
 

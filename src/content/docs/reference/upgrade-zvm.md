@@ -35,3 +35,19 @@ zvm clean
 ```
 
 Use `zvm clean` to remove build artifacts (Good if you're on Windows).
+
+After a successful `install` or `upgrade`, ZVM auto-cleans leftover `.tar.xz`
+and `.zip` artifacts under `~/.zvm/`, so manual cleanup is only needed for
+older installs or if a download was interrupted.
+
+## Reliability
+
+As of v0.8.18, `zvm upgrade` runs as a **download → verify → atomic rename**
+sequence. If the network drops partway through, your existing `zvm` binary is
+left untouched — you no longer end up with a half-installed executable.
+
+On Windows, the PowerShell installer (`install.ps1`) now calls
+`Unblock-File` on the freshly downloaded `zvm.exe` to clear the "downloaded
+from the internet" zone flag before Windows Defender scans it. If Defender
+still quarantines the binary on your machine, the installer prints a clearer
+message pointing to your antivirus.

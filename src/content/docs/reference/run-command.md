@@ -17,6 +17,17 @@ zig version
 # 0.13.0
 ```
 
+Shorthand and aliases work too, as long as the matching version is already
+installed:
+
+```sh
+zvm run .12 version
+zvm run stable version
+```
+
+See [Version Syntax](/reference/install-zig/#version-syntax) for the full list
+of accepted forms.
+
 This can be helpful if you want to test your project on a newer version of Zig
 without having to switch between bins, or on alternative flavor of Zig.
 
