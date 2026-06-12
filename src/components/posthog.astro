@@ -45,3 +45,77 @@
     persistence: 'localStorage+cookie'
   });
 </script>
+<script is:inline type="text/javascript" id="posthog-events">
+  (function () {
+    function capture(event, props) {
+      if (window.posthog && typeof window.posthog.capture === 'function') {
+        window.posthog.capture(event, props);
+      }
+    }
+
+    // Maps a copied command to the ZVM install method it represents, if any.
+    function installMethod(code) {
+      if (code.indexOf('install.sh') !== -1) return 'shell';
+      if (code.indexOf('install.ps1') !== -1) {
+        return code.indexOf('powershell -c') === 0 ? 'cmd' : 'powershell';
+      }
+      if (code.indexOf('go install') === 0) return 'go';
+      if (code.indexOf('go build') === 0) return 'go-build';
+      return null;
+    }
+
+    // First zvm subcommand in the copied snippet, e.g. "i", "use", "vmu".
+    function zvmCommand(code) {
+      var match = code.match(/(?:^|\n)\s*zvm\s+(--?\w[\w.-]*|\w[\w-]*)/);
+      return match ? match[1] : null;
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!e.target || !e.target.closest) return;
+
+      // Expressive Code "Copy to clipboard" buttons carry the snippet in data-code.
+      var btn = e.target.closest('.expressive-code .copy button[data-code]');
+      if (btn) {
+        var code = btn.dataset.code || '';
+        capture('code_copied', {
+          code: code.slice(0, 300),
+          install_method: installMethod(code),
+          zvm_command: zvmCommand(code),
+          page: location.pathname
+        });
+        return;
+      }
+
+      var link = e.target.closest('a[href]');
+      if (
+        link &&
+        /^https?:$/.test(link.protocol) &&
+        link.host &&
+        link.host !== location.host
+      ) {
+        capture('outbound_link_clicked', {
+          url: link.href,
+          domain: link.hostname,
+          text: (link.textContent || '').trim().slice(0, 100),
+          page: location.pathname
+        });
+      }
+    });
+
+    // Starlight's Pagefind search lives inside <site-search>. Debounce so we
+    // record the settled query, not every keystroke.
+    var searchTimer;
+    var lastQuery = '';
+    document.addEventListener('input', function (e) {
+      var input = e.target;
+      if (!input || input.tagName !== 'INPUT' || !input.closest('site-search')) return;
+      clearTimeout(searchTimer);
+      searchTimer = setTimeout(function () {
+        var query = input.value.trim();
+        if (query.length < 2 || query === lastQuery) return;
+        lastQuery = query;
+        capture('docs_search', { query: query, page: location.pathname });
+      }, 1500);
+    });
+  })();
+</script>

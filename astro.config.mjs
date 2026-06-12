@@ -41,7 +41,7 @@ export default defineConfig({
         },
         {
           label: "How To",
-          autogenerate: { directory: "reference" },
+          items: [{ autogenerate: { directory: "reference" } }],
         },
       ],
       components: {
