@@ -37,6 +37,26 @@ zvm i --force master
 You can also enable the old behavior by setting the new `alwaysForceInstall`
 field to `true` in `~/.zvm/settings.json`.
 
+## Install a development build
+
+Zig development builds can be installed by their full identifier, even though
+they are not present in the release version map:
+
+```sh
+zvm i 0.16.0-dev.1334+06d08daba
+```
+
+Because these builds do not have a version-map SHA-256 checksum, ZVM warns you
+and asks for confirmation. For an explicit non-interactive install, pass
+`--skip-shasum` (or `-s`):
+
+```sh
+zvm i --skip-shasum 0.16.0-dev.1334+06d08daba
+```
+
+This flag also disables checksum verification for regular Zig and ZLS
+downloads. Only use it when you accept that risk.
+
 ## Customize HTTP Timeout
 
 You can pass a custom HTTP timeout (in seconds) for `zvm i` using the
@@ -45,6 +65,15 @@ variable.
 
 ```sh
 zvm i --http.timeout 30
+```
+
+## Bypass community mirrors
+
+ZVM normally uses its configured mirror list. Pass `--nomirror` to download
+Zig directly from `ziglang.org` for one installation:
+
+```sh
+zvm i --nomirror master
 ```
 
 ## Install ZLS with ZVM
@@ -82,7 +111,6 @@ and `rm` — accept several forms:
 | `.12`     | `0.12.1` (leading dot implies `0.`)                   |
 | `master`  | Zig's nightly build (passes through unchanged)        |
 | `stable`  | The highest non-dev, non-master tagged release        |
-| `latest`  | Reserved; currently passes through unchanged          |
 
 When shorthand is expanded, ZVM prints a line like `Resolved "0.13" to 0.13.0`
 to stdout. Parse that line if you need the concrete version in scripting.
@@ -96,6 +124,9 @@ some `0.13.x` has already been installed.
 Shorthand and aliases also propagate to the `--zls` installer, so
 `zvm i --zls .13` now installs the matching ZLS build instead of failing
 with an empty-version error.
+
+You can also use a [custom alias](/reference/manage-aliases/) anywhere a
+version is accepted.
 
 ## Cross-target installs
 

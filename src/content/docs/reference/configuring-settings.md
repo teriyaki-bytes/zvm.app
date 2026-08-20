@@ -4,10 +4,9 @@ description: How to configure ZVM settings, environment variables, and option fl
 ---
 
 ZVM has additional settings stored in `~/.zvm/settings.json`. You can manually
-update version maps, toggle color support, and disable the automatic upgrade
-checker here. All settings are also exposed as flags or environment variables.
-This file is stateful, and ZVM will create it if it does not exist and utilizes
-it for its operation.
+update version maps, toggle color support, and control install behavior here.
+Many settings also have command flags or environment variables. This file is
+stateful, and ZVM creates it if it does not exist.
 
 ## Environment Variables
 
@@ -28,6 +27,9 @@ it for its operation.
 - `ZVM_TARGET_ARCH` overrides the CPU architecture ZVM downloads binaries
   for. Equivalent to `--target-arch`. Case-insensitive; accepts `amd64` /
   `x86_64` and `arm64` / `aarch64`.
+- `ZVM_HTTP_TIMEOUT` sets the HTTP timeout in seconds. Equivalent to the
+  `--http.timeout` install flag.
+- `BROWSER` selects the command used by `zvm bug` to open a report URL.
 
 ## Option Flags
 

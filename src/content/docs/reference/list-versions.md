@@ -10,14 +10,22 @@ zvm ls
 
 Use `ls` to list all installed versions of Zig.
 
-## List all versions of Zig available
+## List remote versions
 
 ```sh
-zvm ls --all
+zvm list-remote
+# Or
+zvm ls-remote
 ```
 
-The `--all` flag will list the available versions of Zig for download. Not the
-versions locally installed.
+Use `list-remote` or `ls-remote` to list the versions available for download.
+For machine-readable output, add `--json`:
+
+```sh
+zvm list-remote --json
+```
+
+`zvm ls --all` still works, but is deprecated in favor of `list-remote`.
 
 ## List set version maps
 

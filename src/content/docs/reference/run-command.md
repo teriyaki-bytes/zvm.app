@@ -28,6 +28,15 @@ zvm run stable version
 See [Version Syntax](/reference/install-zig/#version-syntax) for the full list
 of accepted forms.
 
+If the first argument is not a known Zig version, `zvm run` looks for
+`.minimum_zig_version` in the current project's `build.zig.zon` and treats all
+arguments as the Zig command. This lets a repository declare the version while
+you run commands without changing your global selection:
+
+```sh
+zvm run build test
+```
+
 This can be helpful if you want to test your project on a newer version of Zig
 without having to switch between bins, or on alternative flavor of Zig.
 

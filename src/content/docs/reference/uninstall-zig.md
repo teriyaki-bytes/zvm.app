@@ -5,8 +5,9 @@ description: How to uninstall Zig versions using ZVM.
 
 ```sh
 # Examples
-zvm rm 0.10.0
-zvm rm 0.13        # shorthand; resolves to an installed 0.13.x
+zvm rm 0.10.0      # remove an exact version
+zvm rm .13         # shorthand; resolves to an installed 0.13.x
+zvm rm stable      # alias; removes the installed stable release
 ```
 
 Use `uninstall` or `rm` to remove an installed version from your system.

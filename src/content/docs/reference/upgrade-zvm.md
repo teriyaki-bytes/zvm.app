@@ -19,9 +19,9 @@ When you run a build of ZVM with the autoupgrader disabled, you will see a build
 
 ![Builder Message](../../../assets/builder-msg-example.png)
 
-```go
-
-go build -ldflags=-w -s -X 'main.BuildUpgradeMessage=Command to upgrade ZVM goes here.'
+```sh
+go build -tags noAutoUpgrades \
+  -ldflags "-s -w -X 'main.BuildUpgradeMessage=Command to upgrade ZVM goes here.'" .
 ```
 
 

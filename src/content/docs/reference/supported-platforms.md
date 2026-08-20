@@ -9,6 +9,8 @@ ZVM is developed for a wide range of operating systems and architectures.
 
 - amd64
 - arm64
+- loong64 (Linux)
+- ppc64le (Linux)
 
 ## Operating System
 
@@ -18,7 +20,6 @@ ZVM is developed for a wide range of operating systems and architectures.
 - FreeBSD
 - NetBSD
 - OpenBSD
-- Plan 9
 - Solaris
 
 ## Notes

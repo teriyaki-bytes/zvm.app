@@ -4,7 +4,7 @@ description: How to install ZVM on Linux, BSD, macOS, and Windows.
 ---
 
 ZVM lives entirely in `$HOME/.zvm` on all platforms it supports. Inside of the
-directory, ZVM will download new ZIG versions and symlink whichever version you
+directory, ZVM downloads Zig versions and links whichever version you
 specify with `zvm use` to `$HOME/.zvm/bin`. You should add this folder to your
 path. After ZVM 0.2.3, ZVM's installer will now add ZVM to `$HOME/.zvm/self`.
 You should also add this directory as the environment variable `ZVM_INSTALL`.
@@ -59,19 +59,35 @@ go build .
 ./zvm
 ```
 
-If you want to compile ZVM without the ability to run `zvm upgrade` (self-update), like if you're including it as a system dependency or want to distrubute it via a package manager
-you can build it with the `noAutoUpgrades` tag.
+If you want to compile ZVM without `zvm upgrade`, such as when packaging ZVM
+for a system package manager, build it with the `noAutoUpgrades` tag:
 
 ```bash
-go build -tags noAutoUpgrades .
+go build -tags noAutoUpgrades \
+  -ldflags "-s -w -X 'main.BuildUpgradeMessage=Use your package manager to upgrade ZVM.'" .
 ```
 
-instead for building the app.
+## Putting ZVM on your Path
 
-### Putting ZVM on your Path (Windows)
+ZVM requires a few directories to be on your `$PATH`.
 
-ZVM requires a few directories to be on your `$PATH`. If you don't know how to
-update your environment variables permanently on **Windows**, you can follow
+### Linux, BSD, macOS, *nix
+
+The installer script handles this for you automatically. If you need to set it
+up manually, append the following to your shell's startup file (`~/.bashrc`,
+`~/.zshrc`, or `~/.profile`):
+
+```sh
+export ZVM_INSTALL="$HOME/.zvm/self"
+export PATH="$HOME/.zvm/bin:$ZVM_INSTALL:$PATH"
+```
+
+Then restart your shell or `source` the file for the changes to take effect.
+
+### Windows
+
+If you don't know how to update your environment variables permanently on
+**Windows**, you can follow
 [this guide](https://www.computerhope.com/issues/ch000549.htm). Once you're in
 the appropriate menu, add or append to the following environment variables:
 
@@ -84,7 +100,7 @@ Append
 - PATH: `%USERPROFILE%\.zvm\bin`
 - PATH: `%ZVM_INSTALL%`
 
-### Configure ZVM path
+## Configure ZVM path
 
 It is possible to overwrite the default behavior of ZVM to adhere to XDG
 specification on Linux. There's an environment variable `ZVM_PATH`. Setting it
