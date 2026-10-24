@@ -12,11 +12,12 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
+    "@astrojs/netlify": "^8.2.10",
     "@astrojs/starlight": "^0.42.7",
-    "@astrojs/vercel": "^11.0.16",
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource-variable/unbounded": "^5.3.0",
+    "@netlify/blobs": "^11.1.6",
     "ai": "^7.0.153",
     "astro": "^7.4.2",
     "dompurify": "^3.4.17",

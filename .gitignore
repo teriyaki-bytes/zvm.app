@@ -19,6 +19,7 @@ pnpm-debug.log*
 .env.*
 !.env.example
 .vercel/
+.netlify/
 
 # macOS-specific files
 .DS_Store

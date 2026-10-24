@@ -24,14 +24,19 @@ Keep the existing `.env` if it already contains your key. The production build
 also fetches the site's installation scripts from GitHub, so it needs network
 access.
 
-## Vercel
+## Netlify
 
-Deploy to the `zvm.app` project in the `teriyaki` team. `vercel.json` selects
-Astro even if the project previously used another framework. The Vercel
-adapter generates the `/api/chat` Function with a 60-second limit; all
-documentation pages remain prerendered. Set `VERCEL_AI_GATEWAY_API_KEY` as a
-Sensitive environment variable for Production and Preview before deploying.
-A local `.env` does not automatically configure Vercel's environment.
+The site is hosted on Netlify. The `@astrojs/netlify` adapter turns
+`/api/chat` into a Netlify Function; every documentation page stays
+prerendered in `dist/`. Netlify ends streamed function responses after 60
+seconds, so generation is cut off at 45 seconds to leave room for the catalog
+check.
+
+Models still come from Vercel AI Gateway, which is called with an API key and
+does not require Vercel hosting. In the Netlify site's environment variables,
+set `VERCEL_AI_GATEWAY_API_KEY` (mark it secret, scope it to Functions) before
+deploying. Netlify applies environment changes on the next deploy, so redeploy
+after adding or rotating the key. A local `.env` does not configure Netlify.
 
 The key is read at request time with `getSecret()` from `astro:env/server`.
 The key is never passed to the model, returned by the endpoint, or bundled
@@ -60,7 +65,7 @@ and test a new free model from the live catalog, then redeploy. Never add an
 unrestricted model auto-router. The server's catalog check and the key budget
 are separate controls; keep the key's hard limit at $0 to guard against a
 price change between the check and inference. Free inference does not waive
-Vercel hosting/Function usage limits.
+Netlify Function usage limits.
 
 ## Security and data handling
 
@@ -72,8 +77,8 @@ Vercel hosting/Function usage limits.
   `noopener noreferrer`.
 - A bounded in-memory throttle allows ten requests per IP per minute **per
   Function instance**. This is not a distributed abuse limit. Origin checking
-  prevents browser cross-site use; scripts can forge it. Use Vercel Firewall
-  rules if traffic requires a shared abuse limit.
+  prevents browser cross-site use; scripts can forge it. Use Netlify's
+  rate limiting rules if traffic requires a shared abuse limit.
 - There is no shell execution, filesystem browsing, or arbitrary URL-fetching
   tool available to the model. Topic restrictions are model instructions and
   are not a guarantee that every off-topic prompt will be refused.
@@ -81,7 +86,7 @@ Vercel hosting/Function usage limits.
   text or raw provider errors. Completed conversations live in browser
   `sessionStorage` for navigation within the tab; **New chat** clears them.
   The widget is excluded from site click/copy analytics and masked for replay.
-- Messages are sent to Vercel and its model provider. The selected free
+- Messages are sent to Vercel AI Gateway and its model provider. The selected free
   endpoints do not promise zero retention or no training. The widget tells
   users not to submit secrets.
 

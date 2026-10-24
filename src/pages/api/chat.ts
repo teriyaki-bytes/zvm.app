@@ -72,7 +72,8 @@ export const POST: APIRoute = async ({ request, clientAddress, url }) => {
   } catch { return jsonError(unavailable, 503); }
 
   const abort = new AbortController();
-  const signal = AbortSignal.any([abort.signal, request.signal, AbortSignal.timeout(55_000)]);
+  // Netlify ends streamed function responses after 60 s; leave room for the catalog check.
+  const signal = AbortSignal.any([abort.signal, request.signal, AbortSignal.timeout(45_000)]);
   const gateway = createGateway({ apiKey });
   const result = streamText({
     model: gateway(models[0]),

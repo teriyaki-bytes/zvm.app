@@ -26,7 +26,7 @@ pnpm run preview      # Preview production build locally
 ## Architecture
 
 **Stack:** Astro 7 + Starlight 0.42 + starlight-blog plugin. Documentation is
-prerendered; `/api/chat` is a server-side Vercel Function. See `docs/chat.md`
+prerendered; `/api/chat` is a Netlify Function (the site is hosted on Netlify). See `docs/chat.md`
 for AI Gateway configuration, free-model policy, and operating limits.
 
 **Content Structure:**
