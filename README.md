@@ -1,5 +1,8 @@
 # Starlight Starter Kit: Basics
 
+The ZVM documentation assistant uses a server-side Vercel Function and free
+AI Gateway models. See [chat setup and operating limits](docs/chat.md).
+
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
 ```
