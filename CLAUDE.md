@@ -25,8 +25,9 @@ pnpm run preview      # Preview production build locally
 
 ## Architecture
 
-**Stack:** Astro 7 + Starlight 0.42 + starlight-blog plugin. Static site
-generation — no backend.
+**Stack:** Astro 7 + Starlight 0.42 + starlight-blog plugin. Documentation is
+prerendered; `/api/chat` is a server-side Vercel Function. See `docs/chat.md`
+for AI Gateway configuration, free-model policy, and operating limits.
 
 **Content Structure:**
 
