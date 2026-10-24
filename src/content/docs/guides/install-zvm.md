@@ -3,19 +3,19 @@ title: Installing ZVM
 description: How to install ZVM on Linux, BSD, macOS, and Windows.
 ---
 
-ZVM lives entirely in `$HOME/.zvm` on all platforms it supports. Inside of the
-directory, ZVM downloads Zig versions and links whichever version you
-specify with `zvm use` to `$HOME/.zvm/bin`. You should add this folder to your
-path. After ZVM 0.2.3, ZVM's installer will now add ZVM to `$HOME/.zvm/self`.
-You should also add this directory as the environment variable `ZVM_INSTALL`.
-The installer scripts should handle this for you automatically on *nix and
-Windows systems.
+These docs cover **ZVM v0.9.4**. By default, ZVM stores Zig installations and
+settings in `$HOME/.zvm`, with the global Zig selection linked at
+`$HOME/.zvm/bin`. The installer puts ZVM itself in `$HOME/.zvm/self`, sets
+`ZVM_INSTALL` to that directory, and adds both directories to your `PATH`.
+
+For a separate Zig selection in each terminal and automatic project switching,
+set up [per-shell versions](/reference/shell-integration/) after installation.
 
 If you don't want to use `ZVM_INSTALL` (like you already have ZVM in a place you
 like), then ZVM will update the exact executable you've called `upgrade` from.
 
-All installation scripts hosted on `www.zvm.app` are identical to, and are
-automatically synced with their respective copies on GitHub.
+Installation scripts hosted on `www.zvm.app` are copied from GitHub's `master`
+branch when this website is built.
 
 ```
 www.zvm.app/install.sh === ./install.sh
@@ -51,6 +51,25 @@ go install -ldflags "-s -w" github.com/tristanisham/zvm@latest
 
 Please grab the
 [latest release](https://github.com/tristanisham/zvm/releases/latest).
+
+### Verify a release archive
+
+The release workflow publishes `SHA256SUMS` and build provenance attestations.
+Download the archive for your platform and `SHA256SUMS` from the same release.
+From that directory, verify the archive with the GitHub CLI or check its
+checksum:
+
+```sh
+gh attestation verify zvm-linux-amd64.tar --repo tristanisham/zvm
+sha256sum --check --ignore-missing SHA256SUMS
+```
+
+Use your downloaded archive's filename in the attestation command. Attestation
+verification checks that it came from this repository's build workflow; the
+checksum command checks that it matches the release's checksum file. The
+installer scripts and `zvm upgrade` do not verify these release attestations.
+
+### Build from source
 
 Alternatively, you can build the app by cloning the repository and running
 
@@ -102,9 +121,16 @@ Append
 
 ## Configure ZVM path
 
-It is possible to overwrite the default behavior of ZVM to adhere to XDG
-specification on Linux. There's an environment variable `ZVM_PATH`. Setting it
-to `$XDG_DATA_HOME/zvm` will do the trick.
+Set `ZVM_PATH` to replace the default `~/.zvm` data directory. For an XDG-style
+location, add this before your shell integration:
+
+```sh
+export ZVM_PATH="${XDG_DATA_HOME:-$HOME/.local/share}/zvm"
+export PATH="$ZVM_PATH/bin:$PATH"
+```
+
+This changes where Zig versions, settings, aliases, and the deduplication store
+live. Keep the directory containing the ZVM executable on `PATH` too.
 
 ## Community Packages
 

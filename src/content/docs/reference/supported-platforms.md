@@ -3,24 +3,22 @@ title: Supported Platforms
 description: A list of platforms ZVM can run on.
 ---
 
-ZVM is developed for a wide range of operating systems and architectures.
+ZVM v0.9.4's release build targets these operating systems and architectures:
 
-## Architecture
+| Operating system | Architectures |
+| --- | --- |
+| Windows | `386`, `amd64`, `arm64` |
+| Linux | `386`, `amd64`, `arm64`, `loong64`, `ppc64le` |
+| Darwin (macOS) | `amd64`, `arm64` |
+| FreeBSD | `386`, `amd64`, `arm64` |
+| NetBSD | `386`, `amd64`, `arm64` |
+| OpenBSD | `386`, `amd64`, `arm64` |
+| Solaris | `amd64` |
+| Plan 9 | `386` |
 
-- amd64
-- arm64
-- loong64 (Linux)
-- ppc64le (Linux)
-
-## Operating System
-
-- Windows
-- Linux
-- Darwin (macOS)
-- FreeBSD
-- NetBSD
-- OpenBSD
-- Solaris
+`amd64` is also called x86_64, and `arm64` is also called aarch64. The
+[release downloads](https://github.com/tristanisham/zvm/releases/latest)
+contain `.zip` archives for Windows and `.tar` archives for other platforms.
 
 ## Notes
 

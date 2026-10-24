@@ -15,7 +15,7 @@ zvm vmu zig "https://machengine.org/zig/index.json"
 
 zvm vmu zls https://validurl.local/vmu.json
 # ZVM only supports schemas that match the official version map schema.
-# Run `vmu default` to reset your version map.
+# Use the commands below to reset each version map.
 
 zvm vmu zig default # Resets back to default Zig releases.
 zvm vmu zig mach # Sets ZVM to pull from Mach nominated Zig.
@@ -33,4 +33,10 @@ another grouping of mirrors.
 zvm mirrorlist <url>
 # Reset to the official mirror
 zvm mirrorlist default
+
+# Disable community mirrors for every installation
+zvm mirrorlist disabled
 ```
+
+For a single installation, use `zvm i --nomirror <version>` instead. You can
+also edit the saved URL with `zvm settings .mirrorListUrl <url>`.

@@ -34,8 +34,30 @@ installed. You can always force an install with the `--force` or `-f` flag.
 zvm i --force master
 ```
 
-You can also enable the old behavior by setting the new `alwaysForceInstall`
-field to `true` in `~/.zvm/settings.json`.
+You can also enable this behavior with
+`zvm settings .alwaysForceInstall true`.
+
+## Install without switching
+
+By default, a newly installed version becomes active. Use `--skip-use` (or
+`-k`) to install Zig and any requested ZLS without changing the selection:
+
+```sh
+zvm i --skip-use --zls 0.15.2
+```
+
+## Download verification
+
+ZVM verifies official Zig archives with Zig's Minisign signing key and checks
+that the signed filename matches the requested archive. Failed mirror
+downloads or verification checks trigger the next mirror, with the original
+download URL as the final fallback.
+
+After verification, ZVM records the archive's SHA-256 in
+`~/.zvm/known_hashes.json` (or `$ZVM_PATH/known_hashes.json`). If that filename
+later has a different hash, installation fails. `--force` does not bypass
+this check. Custom version maps use their published checksums and are not
+added to this store.
 
 ## Install a development build
 
@@ -54,8 +76,9 @@ and asks for confirmation. For an explicit non-interactive install, pass
 zvm i --skip-shasum 0.16.0-dev.1334+06d08daba
 ```
 
-This flag also disables checksum verification for regular Zig and ZLS
-downloads. Only use it when you accept that risk.
+This flag skips SHA-256 verification and the unverified-download confirmation
+for Zig and ZLS downloads. Official Zig archives still require valid Minisign
+signatures. Use it only when you accept skipping the checksum check.
 
 ## Customize HTTP Timeout
 
@@ -64,7 +87,7 @@ You can pass a custom HTTP timeout (in seconds) for `zvm i` using the
 variable.
 
 ```sh
-zvm i --http.timeout 30
+zvm i --http.timeout 30 master
 ```
 
 ## Bypass community mirrors
@@ -112,14 +135,17 @@ and `rm` — accept several forms:
 | `master`  | Zig's nightly build (passes through unchanged)        |
 | `stable`  | The highest non-dev, non-master tagged release        |
 
-When shorthand is expanded, ZVM prints a line like `Resolved "0.13" to 0.13.0`
-to stdout. Parse that line if you need the concrete version in scripting.
+For `install` and `use`, shorthand expansion prints a line such as
+`Resolved "0.13" to 0.13.0`. `run` resolves shorthand without printing that
+line.
 
 **Resolution scope matters.** `install` resolves against the *remote* version
 map (the Zig download index by default, or your configured
-[version map](/reference/version-maps)). `use`, `rm`, and `run` resolve
-against versions that are *locally installed* — you cannot `use 0.13` unless
-some `0.13.x` has already been installed.
+[version map](/reference/version-maps/)). `use` and `rm` resolve shorthand
+against *locally installed* versions. `run` checks installed versions first,
+then the remote map if no local version matches. Both `use` and `run` can
+prompt to install a missing version. Install explicitly before using them in
+scripts that must run without prompts.
 
 Shorthand and aliases also propagate to the `--zls` installer, so
 `zvm i --zls .13` now installs the matching ZLS build instead of failing
@@ -127,6 +153,9 @@ with an empty-version error.
 
 You can also use a [custom alias](/reference/manage-aliases/) anywhere a
 version is accepted.
+
+To share identical files across installations, see
+[Deduplicate Installed Versions](/reference/deduplicate-versions/).
 
 ## Cross-target installs
 

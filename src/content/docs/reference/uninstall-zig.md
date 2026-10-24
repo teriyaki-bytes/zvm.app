@@ -16,3 +16,7 @@ Use `uninstall` or `rm` to remove an installed version from your system.
 the remote version map. See
 [Version Syntax](/reference/install-zig/#version-syntax) for the full list of
 accepted forms.
+
+Uninstalling also prunes files in the deduplication store that no installation
+references. Linked local builds are protected: remove the link yourself
+instead of using `zvm rm`.

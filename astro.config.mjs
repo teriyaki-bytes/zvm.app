@@ -46,6 +46,7 @@ export default defineConfig({
       ],
       components: {
         Head: "./src/layouts/PostHogLayout.astro",
+        Footer: "./src/components/PreviewFooter.astro",
       },
     }),
   ],

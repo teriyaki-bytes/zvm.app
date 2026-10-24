@@ -7,6 +7,11 @@ ZVM stores its binary, installed Zig versions, aliases, and settings under
 `$HOME/.zvm` on Unix-like systems and `$HOME\.zvm` on Windows. Remove the
 installer-managed shell configuration before deleting that directory.
 
+If you configured [per-shell versions](/reference/shell-integration/), also
+remove the `zvm env` line from your shell startup file or PowerShell profile.
+Remove custom `ZVM_PATH` and `ZVM_MULTISHELL_DIR` configuration if present,
+and delete the custom data directory instead of `~/.zvm` if you used one.
+
 ## Linux, BSD, macOS, and other Unix-like systems
 
 The installer adds a block beginning with `# ZVM` to one shell startup file:

@@ -1,5 +1,6 @@
 ---
 title: v0.8.12 Release
+author: Tristan Isham
 date: 2026-01-22
 draft: false
 ---

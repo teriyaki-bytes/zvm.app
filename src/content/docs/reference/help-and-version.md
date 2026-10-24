@@ -17,18 +17,9 @@ Print help information about a specific command or subcommand.
 zvm list --help
 ```
 
-```
-NAME:
-   zvm list - list installed Zig versions. Flag `--all` to see remote options
-
-USAGE:
-   zvm list [command options] [arguments...]
-
-OPTIONS:
-   --all, -a   list remote Zig versions available for download, based on your version map (default: false)
-   --vmu       list set version maps (default: false)
-   --help, -h  show help
-```
+Use the help output from your installed binary for its current commands,
+options, and aliases. For example, `list` also accepts the alias `ls`;
+use `list-remote` or `ls-remote` to see downloadable versions.
 
 ## Print program version
 
@@ -40,6 +31,9 @@ zvm version        # same output — added in v0.8.19
 Both forms print the version of ZVM you have installed. The `version`
 subcommand was added for tooling and shells that parse subcommands but not
 global flags.
+
+These docs cover ZVM **v0.9.4**. Check your installed version and
+[upgrade ZVM](/reference/upgrade-zvm/) if a documented command is missing.
 
 ## Shell Completion
 

@@ -60,4 +60,9 @@ generation — no backend.
   repo. `getStaticPaths` fixes the set of extensions.
 - Content mirrors the ZVM README from https://github.com/tristanisham/zvm —
   keep command reference docs in sync with upstream
+- Blog posts can set optional `author: Tristan Isham` frontmatter for a byline
+  and author metadata. The existing `authors` field takes precedence when set.
+- `LinkPreviews` accepts `off={true}` to disable previews, or a CSS selector to
+  exclude matching links. The footer excludes `.sl-blog-preview-link` so blog
+  titles and their cover images do not show a preview of themselves.
 - Build command includes TypeScript type checking (`astro check`)

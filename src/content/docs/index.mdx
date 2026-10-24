@@ -22,6 +22,10 @@ import LogoCarousel from '../../components/LogoCarousel.astro';
 
 <Hero />
 
+These docs cover **ZVM v0.9.4**. [Upgrade your installation](/reference/upgrade-zvm/)
+to use per-shell versions, automatic project switching, the settings editor,
+and deduplication.
+
 ## Features
 
 <CardGrid stagger>
@@ -47,9 +51,15 @@ import LogoCarousel from '../../components/LogoCarousel.astro';
 	<Card title="Install ZLS, the Zig Language Server" icon='puzzle'>
 	Just add `--zls` to your install and ZVM will handle the rest.
 	</Card>
-	{/* <Card title="Lock your project to a specific Zig version" icon="setting">
-		Zig's updating all the time. Lock your project's Zig version with ZVM to make it easier for contributors.
-	</Card> */}
+	<Card title="Give Each Shell Its Own Zig" icon="setting">
+		Use [`zvm env`](/reference/shell-integration/) to keep separate versions in
+		each terminal and switch automatically when you enter a project.
+	</Card>
+	<Card title="Save Space Across Versions" icon="open-book">
+		[`zvm dedupe`](/reference/deduplicate-versions/) shares identical files
+		between installations. Use [`zvm settings`](/reference/configuring-settings/)
+		to manage your preferences from the terminal.
+	</Card>
 	<Card title="And so much more!" icon="open-book">
 		Learn more about ZVM and Zig in the [ZVM Docs](reference/install-zig/).
 	</Card>

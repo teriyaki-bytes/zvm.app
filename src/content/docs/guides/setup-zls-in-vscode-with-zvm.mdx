@@ -1,6 +1,6 @@
 ---
 title: How to Configure VSCode with ZVM
-description: How to set up the Zig Langugage Server in VSCode to use ZVM.
+description: How to set up the Zig Language Server in VSCode to use ZVM.
 ---
 
 import { Image } from 'astro:assets';
@@ -28,4 +28,11 @@ You will need to update two settings: Zig path and ZLS path.
 <Image src={zlsPath} alt="ZLS path settings"/>
 `~/.zvm/bin/zls`
 
-ZVM automatically handles updating your Zig and ZLS versions. You only need to configure these settings once.
+ZVM updates these paths when you change the global Zig and ZLS selection.
+You only need to configure the paths once. If you set `ZVM_PATH`, replace
+`~/.zvm` with that directory.
+
+These fixed paths follow the global selection. With
+[per-shell versions](/reference/shell-integration/), `zvm use` changes a
+separate shell link. Use `zvm use --global <version>` to update the toolchain
+at the fixed paths configured in VSCode.

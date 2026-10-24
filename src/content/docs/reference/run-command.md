@@ -17,13 +17,18 @@ zig version
 # 0.13.0
 ```
 
-Shorthand and aliases work too, as long as the matching version is already
-installed:
+Shorthand and aliases work too:
 
 ```sh
 zvm run .12 version
 zvm run stable version
 ```
+
+ZVM resolves shorthand against installed versions first. If none matches, it
+checks the remote version map and prompts to install a missing version.
+Install the requested version before running commands in scripts that must
+avoid prompts. Running an already installed version leaves the global and
+per-shell selections unchanged.
 
 See [Version Syntax](/reference/install-zig/#version-syntax) for the full list
 of accepted forms.

@@ -34,11 +34,15 @@ Remember, ZVM is an open source project. Anyone can customize and distribute it.
 zvm clean
 ```
 
-Use `zvm clean` to remove build artifacts (Good if you're on Windows).
+Use `zvm clean` to remove downloaded archives from the ZVM data directory.
+In v0.9.4, it also prunes files from the [deduplication store](/reference/deduplicate-versions/)
+that no installed version references, and [per-shell links](/reference/shell-integration/)
+older than a week whose shells have exited.
 
 After a successful `install` or `upgrade`, ZVM auto-cleans leftover `.tar.xz`
 and `.zip` artifacts under `~/.zvm/`, so manual cleanup is only needed for
-older installs or if a download was interrupted.
+older installs or if a download was interrupted. Run it when you also want to
+reclaim unused store files or stale shell links.
 
 ## Reliability
 

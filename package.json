@@ -11,12 +11,15 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/starlight": "^0.40.0",
-    "astro": "^6.4.6",
+    "@astrojs/starlight": "^0.42.7",
+    "astro": "^7.4.2",
     "posthog-js": "^1.370.1",
-    "sharp": "^0.34.5",
-    "starlight-blog": "^0.26.1",
+    "sharp": "^0.35.5",
+    "starlight-blog": "^0.30.2",
     "typescript": "^6.0.3"
   },
-  "packageManager": "pnpm@9.0.2+sha256.d6fc013639b81658ff175829ebb9435bcb89eff206769e460fd3ae27c2054df6"
+  "packageManager": "pnpm@9.0.2+sha256.d6fc013639b81658ff175829ebb9435bcb89eff206769e460fd3ae27c2054df6",
+  "allowScripts": {
+    "core-js@3.49.0": true
+  }
 }
