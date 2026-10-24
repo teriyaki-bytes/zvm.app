@@ -3,7 +3,6 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "test": "node --test src/lib/*.test.ts",
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
@@ -13,14 +12,10 @@
   "dependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/starlight": "^0.42.7",
-    "@astrojs/vercel": "^11.0.16",
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
     "@fontsource-variable/jetbrains-mono": "^5.3.0",
     "@fontsource-variable/unbounded": "^5.3.0",
-    "ai": "^7.0.153",
     "astro": "^7.4.2",
-    "dompurify": "^3.4.17",
-    "marked": "^18.1.1",
     "posthog-js": "^1.370.1",
     "sharp": "^0.35.5",
     "starlight-blog": "^0.30.2",

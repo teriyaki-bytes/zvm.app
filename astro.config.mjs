@@ -1,12 +1,10 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
 import starlightBlog from "starlight-blog";
-import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://www.zvm.app",
-  adapter: vercel({ maxDuration: 60 }),
   integrations: [
     starlight({
       plugins: [starlightBlog()],

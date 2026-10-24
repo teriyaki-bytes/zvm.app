@@ -1,12 +1,10 @@
 ---
 import DefaultFooter from '@astrojs/starlight/components/Footer.astro';
 import LinkPreviews from './LinkPreviews.astro';
-import ZvmChat from './ZvmChat.astro';
 ---
 
 <DefaultFooter><slot /></DefaultFooter>
 <LinkPreviews off=".sl-blog-preview-link" />
-<ZvmChat />
 
 <script>
   // Terminal recordings autoplay; for reduced-motion users, stop them and offer controls instead.
