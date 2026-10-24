@@ -1,0 +1,140 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const posts = (await getCollection('docs', ({ id, data }) => id.startsWith('blog/') && !data.draft && data.date))
+  .sort((a, b) => b.data.date!.getTime() - a.data.date!.getTime());
+
+// Posts without a description get the opening sentence or two of their body text.
+function excerpt(body = '', limit = 170) {
+  const text = body
+    .replace(/^import .*$/gm, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/^#+ .*$/gm, '')
+    .replace(/^-{3,}$/gm, '')
+    .replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (text.length <= limit) return text;
+  return text.slice(0, text.lastIndexOf(' ', limit)) + '…';
+}
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
+
+const items = posts.map((post) => {
+  const cover = post.data.cover;
+  const image = cover ? ('image' in cover ? cover.image : cover.light) : undefined;
+  return {
+    href: `/${post.id}/`,
+    title: post.data.title,
+    date: post.data.date!,
+    summary: post.data.description ?? excerpt(post.body),
+    image: typeof image === 'string' ? undefined : image,
+    alt: cover?.alt ?? '',
+  };
+});
+---
+
+<div class="blog-grid not-content">
+  {items.map((post, i) => (
+    <article class:list={['post', { lead: i === 0 && post.image }]}>
+      {i === 0 && post.image && (
+        <a href={post.href} class="cover" tabindex="-1" aria-hidden="true">
+          <Image src={post.image} alt={post.alt} widths={[480, 800]} sizes="(max-width: 760px) 100vw, 26rem" />
+        </a>
+      )}
+      <div class="text">
+        <time datetime={post.date.toISOString()}>{formatDate(post.date)}</time>
+        <h3><a href={post.href} data-ph-event="home_blog_post">{post.title}</a></h3>
+        <p>{post.summary}</p>
+      </div>
+    </article>
+  ))}
+</div>
+<p class="all-posts not-content"><a href="/blog/">Read all posts</a></p>
+
+<style>
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem 3rem;
+  }
+
+  .post {
+    border-top: 2px solid var(--sl-color-white);
+    padding-top: 1rem;
+  }
+
+  .post.lead {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+    gap: 1.75rem;
+    align-items: start;
+    padding-top: 1.25rem;
+  }
+
+  .cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 2px solid var(--zvm-ink);
+    border-radius: 0.75rem;
+  }
+
+  time {
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+  }
+
+  h3 {
+    margin: 0.35rem 0 0;
+    font-family: var(--zvm-font-display);
+    font-size: var(--sl-text-xl);
+    font-weight: 600;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .lead h3 {
+    font-size: var(--sl-text-2xl);
+  }
+
+  h3 a {
+    color: var(--sl-color-white);
+    text-decoration: none;
+  }
+
+  h3 a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.15em;
+  }
+
+  p {
+    margin: 0.5rem 0 0;
+    max-width: 34em;
+    line-height: 1.65;
+    color: var(--sl-color-gray-2);
+  }
+
+  .all-posts {
+    margin-top: 1.75rem;
+  }
+
+  .all-posts a {
+    font-weight: 700;
+    color: var(--sl-color-text-accent);
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 760px) {
+    .blog-grid,
+    .post.lead {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

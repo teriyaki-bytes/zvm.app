@@ -3,6 +3,13 @@ title: Set Up Per-Shell Versions
 description: Give each shell its own Zig version and switch automatically when entering a project.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/shell-integration.webp" aria-label="Terminal recording: after evaluating zvm env, changing into a project whose build.zig pins 0.14.1 switches the shell from 0.15.2 to 0.14.1">
+    <source src="/videos/shell-integration.webm" type="video/webm" />
+    <source src="/videos/shell-integration.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ZVM v0.9.4 can give each shell its own Zig version. Add the setup command for
 your shell to its startup file, after ZVM's existing `PATH` configuration.
 

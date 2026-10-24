@@ -3,6 +3,13 @@ title: Help & Version
 description: How to print help information and version for ZVM.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/help-and-version.webp" aria-label="Terminal recording: zvm --version prints the version, and zvm use --help prints help for one command">
+    <source src="/videos/help-and-version.webm" type="video/webm" />
+    <source src="/videos/help-and-version.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ## Print program help
 
 Print global help information by running:
@@ -32,8 +39,9 @@ Both forms print the version of ZVM you have installed. The `version`
 subcommand was added for tooling and shells that parse subcommands but not
 global flags.
 
-These docs cover ZVM **v0.9.4**. Check your installed version and
-[upgrade ZVM](/reference/upgrade-zvm/) if a documented command is missing.
+These docs cover the ZVM version shown at the top of the page. If a documented
+command is missing, check your installed version and
+[upgrade ZVM](/reference/upgrade-zvm/).
 
 ## Shell Completion
 

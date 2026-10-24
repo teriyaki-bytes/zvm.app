@@ -25,7 +25,7 @@ pnpm run preview      # Preview production build locally
 
 ## Architecture
 
-**Stack:** Astro 6 + Starlight 0.40 + starlight-blog plugin. Static site
+**Stack:** Astro 7 + Starlight 0.42 + starlight-blog plugin. Static site
 generation — no backend.
 
 **Content Structure:**
@@ -38,10 +38,19 @@ generation — no backend.
   (auto-generated in sidebar)
 - `src/content/docs/blog/` - Blog posts
 - `src/components/` - Custom `.astro` components (`Hero`, `InstallTabs`,
-  `LogoCarousel`, `posthog`)
+  `HomeFeatures`, `BlogGrid`, `LinkPreviews`, `PreviewFooter`, `posthog`)
+- `src/styles/theme.css` - Site theme loaded through Starlight `customCss`:
+  colours taken from the logo (orange, ember, ink, cream), Unbounded for
+  headings, Atkinson Hyperlegible Next for body text, and JetBrains Mono for
+  code (all self-hosted via `@fontsource-variable` packages)
 - `src/layouts/PostHogLayout.astro` - Overrides Starlight's `Head` to inject
   the PostHog analytics snippet on every page
-- `src/assets/` - Images and static assets
+- `src/assets/` - Images and static assets; blog covers are hand-written SVG
+  "release drawings" (`zvm-<version>-blueprint.svg`)
+- `public/videos/` - Terminal recordings made with `vhs` (`.webm`, `.mp4`
+  fallback, `.webp` poster). Reference pages embed them with a
+  `<figure class="terminal-demo">`. Record them in a container with a neutral
+  user, host, and prompt so no personal details appear
 
 **Configuration:**
 

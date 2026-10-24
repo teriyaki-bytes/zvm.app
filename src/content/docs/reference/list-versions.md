@@ -3,6 +3,13 @@ title: List Versions
 description: How to list installed and available Zig versions using ZVM.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/list-versions.webp" aria-label="Terminal recording: zvm ls lists installed versions, and zvm ls-remote lists versions available to download">
+    <source src="/videos/list-versions.webm" type="video/webm" />
+    <source src="/videos/list-versions.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ```sh
 # Example
 zvm ls

@@ -1,0 +1,192 @@
+---
+// Each feature is shown working: the recordings share one size so the rows line up.
+const features = [
+  {
+    title: 'Install any Zig',
+    body: [
+      'Install a tagged release, the latest nightly with <code>master</code>, or the newest stable release with <code>stable</code>. Shorthand like <code>.15</code> resolves to the highest 0.15.x, and full development build identifiers work too.',
+      'Add <code>--zls</code> and ZVM installs a matching Zig Language Server alongside it. Official archives are checked against Zig\'s Minisign key, and a failed download moves on to the next community mirror.',
+    ],
+    commands: [
+      ['zvm i master --zls', 'Latest nightly, plus ZLS'],
+      ['zvm i --skip-use 0.15.2', 'Install without switching to it'],
+      ['zvm vmu zig mach', 'Pull future installs from Mach\'s version map'],
+    ],
+    more: ['/reference/install-zig/', 'Installing Zig'],
+    video: 'home-install',
+    label: 'zvm i master --zls downloads Zig master and a matching ZLS, verifies checksums and signatures, and installs both',
+  },
+  {
+    title: 'Switch in one command',
+    body: [
+      '<code>zvm use</code> changes which installed Zig runs when you type <code>zig</code>. Ask for a version you don\'t have and it offers to install it first.',
+      'Inside a project, <code>zvm use</code> with no version reads <code>.minimum_zig_version</code> from <code>build.zig.zon</code>. To try a version once without switching, use <code>zvm run</code>.',
+    ],
+    commands: [
+      ['zvm use stable', 'Highest installed stable release'],
+      ['zvm use local', 'A Zig you built and linked as local'],
+      ['zvm run 0.14.1 build', 'One command with 0.14.1'],
+    ],
+    more: ['/reference/switch-versions/', 'Switching versions'],
+    video: 'home-switch',
+    label: 'zvm ls lists installed versions, then zvm use switches between Zig 0.14.1 and 0.15.2',
+  },
+  {
+    title: 'One version per shell',
+    body: [
+      'Add one line to your shell\'s startup file and every terminal keeps its own Zig. New shells start on the global default, and <code>zvm use</code> changes only the shell you\'re in.',
+      'With <code>--use-on-cd</code>, entering a project switches to the version it declares, either a <code>//! zvm-lock:</code> line in <code>build.zig</code> or <code>.minimum_zig_version</code> in <code>build.zig.zon</code>. If that version isn\'t installed, ZVM tells you how to install it rather than downloading anything.',
+    ],
+    commands: [
+      ['eval "$(zvm env --shell bash --use-on-cd)"', 'Bash; Zsh, Fish, and PowerShell work too'],
+      ['zvm use --global 0.15.2', 'Change the default for new shells'],
+    ],
+    more: ['/reference/shell-integration/', 'Setting up per-shell versions'],
+    video: 'home-shell',
+    label: 'after zvm env is set up, entering a project whose build.zig pins 0.14.1 switches the shell from 0.15.2 to 0.14.1',
+  },
+  {
+    title: 'Use less disk',
+    body: [
+      'Zig releases share much of their standard library. <code>zvm dedupe</code> hard-links identical files into one store, so each is kept once. In this recording, ten installed versions drop from 3.1&nbsp;GiB to 2.2&nbsp;GiB.',
+      'Files are shared only when their content, permissions, and owner match. It\'s safe to repeat or interrupt, and removing a version cleans up store files nothing else uses.',
+    ],
+    commands: [
+      ['zvm dedupe --auto on', 'Deduplicate every future install'],
+      ['zvm dedupe .15', 'Only the 0.15.x installs'],
+    ],
+    more: ['/reference/deduplicate-versions/', 'Deduplicating versions'],
+    video: 'home-dedupe',
+    label: 'zvm dedupe shares identical files across ten installed Zig versions and reclaims 924.7 MiB',
+  },
+];
+
+---
+
+<div class="home-features not-content">
+  {features.map((f) => (
+    <section class="feature">
+      <div class="copy">
+        <h3>{f.title}</h3>
+        {f.body.map((para) => <p set:html={para} />)}
+        <a class="more" href={f.more[0]}>{f.more[1]}</a>
+      </div>
+      <div class="demo">
+        <figure class="terminal-demo">
+          <video autoplay loop muted playsinline preload="metadata" width="1000" height="540" poster={`/videos/${f.video}.webp`} aria-label={`Terminal recording: ${f.label}`}>
+            <source src={`/videos/${f.video}.webm`} type="video/webm" />
+            <source src={`/videos/${f.video}.mp4`} type="video/mp4" />
+          </video>
+        </figure>
+        <dl class="commands">
+          {f.commands.map(([cmd, what]) => (
+            <div>
+              <dt><code>{cmd}</code></dt>
+              <dd>{what}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  ))}
+</div>
+
+<style>
+  .home-features {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+
+  .feature {
+    display: grid;
+    grid-template-columns: minmax(0, 19rem) minmax(0, 1fr);
+    gap: 1.5rem clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+    border-top: 2px solid var(--sl-color-white);
+    padding-top: 1.25rem;
+  }
+
+  .feature .terminal-demo {
+    margin: 0;
+  }
+
+  .feature video {
+    aspect-ratio: 1000 / 540;
+  }
+
+  h3 {
+    margin: 0;
+    font-family: var(--zvm-font-display);
+    font-size: var(--sl-text-xl);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--sl-color-white);
+  }
+
+  .copy p {
+    margin: 0.6rem 0 0;
+    line-height: 1.65;
+    color: var(--sl-color-gray-2);
+  }
+
+  .more {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-weight: 700;
+  }
+
+  /* One shared grid so every description starts in the same column. */
+  .commands {
+    margin: 0.9rem 0 0;
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 0.4rem 1.25rem;
+    align-items: baseline;
+  }
+
+  .commands > div {
+    display: contents;
+  }
+
+  .commands dt code {
+    font-family: var(--__sl-font-mono);
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-white);
+  }
+
+  .commands dd {
+    margin: 0;
+    font-size: var(--sl-text-sm);
+    color: var(--sl-color-gray-3);
+  }
+
+  .home-features .copy :global(code) {
+    font-family: var(--__sl-font-mono);
+    font-size: 0.88em;
+    color: var(--sl-color-white);
+    white-space: nowrap;
+  }
+
+  .home-features :global(a) {
+    color: var(--sl-color-text-accent);
+    text-underline-offset: 0.2em;
+  }
+
+  @media (max-width: 860px) {
+    .feature {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .commands {
+      grid-template-columns: minmax(0, 1fr);
+      row-gap: 0.1rem;
+    }
+
+    .commands dd {
+      margin-bottom: 0.5rem;
+    }
+  }
+</style>

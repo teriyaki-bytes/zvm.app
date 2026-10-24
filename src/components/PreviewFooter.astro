@@ -5,3 +5,18 @@ import LinkPreviews from './LinkPreviews.astro';
 
 <DefaultFooter><slot /></DefaultFooter>
 <LinkPreviews off=".sl-blog-preview-link" />
+
+<script>
+  // Terminal recordings autoplay; for reduced-motion users, stop them and offer controls instead.
+  function pauseDemosForReducedMotion() {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll<HTMLVideoElement>('.terminal-demo video').forEach((video) => {
+      video.autoplay = false;
+      video.pause();
+      video.controls = true;
+    });
+  }
+
+  pauseDemosForReducedMotion();
+  document.addEventListener('astro:after-swap', pauseDemosForReducedMotion);
+</script>

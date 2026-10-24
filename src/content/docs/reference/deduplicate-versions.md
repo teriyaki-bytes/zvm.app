@@ -3,6 +3,13 @@ title: Deduplicate Installed Versions
 description: Save disk space by sharing identical files across installed Zig versions.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/home-dedupe.webp" aria-label="Terminal recording: zvm dedupe hard-links identical files across ten installed Zig versions and reclaims 924.7 MiB">
+    <source src="/videos/home-dedupe.webm" type="video/webm" />
+    <source src="/videos/home-dedupe.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ZVM v0.9.4 can replace identical files across Zig installations with hard links
 into `~/.zvm/store` (or `$ZVM_PATH/store`).
 

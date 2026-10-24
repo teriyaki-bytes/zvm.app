@@ -3,6 +3,13 @@ title: Version Maps
 description: How to configure custom version map sources and mirror servers for ZVM.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/version-maps.webp" aria-label="Terminal recording: zvm vmu switches the Zig version map to Mach, zvm ls --vmu shows it, and zvm vmu zig default resets it">
+    <source src="/videos/version-maps.webm" type="video/webm" />
+    <source src="/videos/version-maps.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ## Set Version Map Source
 
 ZVM lets you choose your vendor for Zig and ZLS. This is great if your company

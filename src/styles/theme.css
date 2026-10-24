@@ -1,0 +1,131 @@
+/*
+  ZVM theme. Orange and ember come from the planet logo; the warm brown
+  greys and ink are the site's own and stay warm against the logo's cool outline.
+*/
+
+:root {
+  --zvm-orange: #ff8c00;
+  --zvm-ember: #ff4612;
+  --zvm-ink: #1d1611;
+  --zvm-cream: #fff4e2;
+
+  --sl-font: 'Atkinson Hyperlegible Next Variable';
+  --sl-font-mono: 'JetBrains Mono Variable';
+  --zvm-font-display: 'Unbounded Variable', var(--__sl-font);
+
+  /* Dark mode: warm brown greys. */
+  --sl-color-white: hsl(36, 60%, 97%);
+  --sl-color-gray-1: hsl(30, 18%, 90%);
+  --sl-color-gray-2: hsl(30, 9%, 76%);
+  --sl-color-gray-3: hsl(28, 6%, 58%);
+  --sl-color-gray-4: hsl(26, 7%, 38%);
+  --sl-color-gray-5: hsl(25, 10%, 24%);
+  --sl-color-gray-6: hsl(25, 14%, 14%);
+  --sl-color-black: hsl(25, 22%, 9%);
+
+  --sl-color-accent-low: hsl(22, 55%, 17%);
+  --sl-color-accent: hsl(33, 100%, 50%);
+  --sl-color-accent-high: hsl(34, 100%, 78%);
+}
+
+:root[data-theme='light'] {
+  --sl-color-white: var(--zvm-ink);
+  --sl-color-gray-1: hsl(25, 14%, 16%);
+  --sl-color-gray-2: hsl(25, 10%, 24%);
+  --sl-color-gray-3: hsl(25, 7%, 37%);
+  --sl-color-gray-4: hsl(28, 6%, 56%);
+  --sl-color-gray-5: hsl(30, 9%, 80%);
+  --sl-color-gray-6: hsl(32, 22%, 93%);
+  --sl-color-gray-7: hsl(34, 30%, 97%);
+  --sl-color-black: hsl(0, 0%, 100%);
+
+  /* Ember darkened until white text on it and it on white both pass AA. */
+  --sl-color-accent-low: hsl(32, 100%, 91%);
+  --sl-color-accent: hsl(17, 82%, 40%);
+  --sl-color-accent-high: hsl(17, 85%, 30%);
+}
+
+/* Headings */
+
+.sl-markdown-content :is(h1, h2),
+h1#_top,
+.site-title {
+  font-family: var(--zvm-font-display);
+  letter-spacing: -0.01em;
+}
+
+h1#_top {
+  font-weight: 650;
+  font-size: clamp(2rem, 1.4rem + 2.4vw, 2.75rem);
+  line-height: 1.1;
+}
+
+.sl-markdown-content h2 {
+  font-weight: 600;
+  font-size: clamp(1.45rem, 1.2rem + 1vw, 1.85rem);
+  line-height: 1.2;
+}
+
+.sl-markdown-content h3 {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+}
+
+/* Body copy: Atkinson sets slightly large, so keep lines short and airy. */
+
+.sl-markdown-content {
+  line-height: 1.7;
+}
+
+.sl-markdown-content :is(p, li) {
+  max-width: 68ch;
+}
+
+.sl-markdown-content a:not(:where(.not-content *)) {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.sl-markdown-content a:not(:where(.not-content *)):hover {
+  text-decoration-thickness: 2px;
+}
+
+.sl-markdown-content :not(pre) > code:not(:where(.not-content *)) {
+  border-radius: 0.3em;
+  padding: 0.1em 0.35em;
+}
+
+/* Sidebar: the current page gets the ink outline from the logo instead of a flat fill. */
+
+nav.sidebar a[aria-current='page'],
+nav.sidebar a[aria-current='page']:hover,
+nav.sidebar a[aria-current='page']:focus {
+  color: var(--sl-color-white);
+  background: var(--sl-color-accent-low);
+  box-shadow: inset 3px 0 0 var(--zvm-ember);
+  font-weight: 700;
+}
+
+:focus-visible {
+  outline: 2px solid var(--zvm-ember);
+  outline-offset: 2px;
+}
+
+/* Terminal recordings (vhs) on the homepage and reference pages. */
+
+.terminal-demo {
+  margin-block: 1.5rem;
+}
+
+.terminal-demo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--zvm-ink);
+  border-radius: 0.75rem;
+  background: #1d1611;
+}
+
+:root[data-theme='dark'] .terminal-demo video {
+  border-color: var(--sl-color-gray-5);
+}

@@ -3,7 +3,7 @@ title: Installing ZVM
 description: How to install ZVM on Linux, BSD, macOS, and Windows.
 ---
 
-These docs cover **ZVM v0.9.4**. By default, ZVM stores Zig installations and
+By default, ZVM stores Zig installations and
 settings in `$HOME/.zvm`, with the global Zig selection linked at
 `$HOME/.zvm/bin`. The installer puts ZVM itself in `$HOME/.zvm/self`, sets
 `ZVM_INSTALL` to that directory, and adds both directories to your `PATH`.

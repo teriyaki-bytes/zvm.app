@@ -3,6 +3,9 @@ title: v0.8.12 Release
 author: Tristan Isham
 date: 2026-01-22
 draft: false
+cover:
+  image: ../../../assets/zvm-8-12-blueprint.svg
+  alt: A large black 8.12 on white blueprint paper with drafting grids, construction lines, and dimension marks.
 ---
 
 Today I'm publishing v0.8.12 of ZVM. I want to thank

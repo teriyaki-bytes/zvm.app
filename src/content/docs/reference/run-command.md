@@ -3,6 +3,13 @@ title: Run Command
 description: How to run a specific Zig version without switching your default.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/run-command.webp" aria-label="Terminal recording: zvm run runs Zig 0.14.1 and 0.13.0 once without changing the default 0.15.2">
+    <source src="/videos/run-command.webm" type="video/webm" />
+    <source src="/videos/run-command.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 If you want to run a version of Zig without setting it as your default, the
 `run` command is your friend.
 

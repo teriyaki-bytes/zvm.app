@@ -3,6 +3,13 @@ title: Install Zig
 description: How to install Zig versions using ZVM.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/install-master-zls.webp" aria-label="Terminal recording: zvm i master --zls downloads Zig master and a matching ZLS, verifies checksums and signatures, and installs both">
+    <source src="/videos/install-master-zls.webm" type="video/webm" />
+    <source src="/videos/install-master-zls.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ```sh
 zvm install <version>
 # Or
@@ -182,3 +189,18 @@ zvm i 0.14.0
 Both Go-style names (`darwin`, `amd64`, `arm64`) and Zig-style names
 (`macos`, `x86_64`, `aarch64`) are accepted, and values are
 case-insensitive.
+
+## Install Mach's Zig
+
+ZVM reads the list of available Zig builds from a version map. By default it
+uses the official map from `ziglang.org`, but you can point it at another
+vendor's, such as [Mach](https://machengine.org/)'s nominated Zig versions:
+
+```sh
+zvm vmu zig mach      # use Mach's version map
+zvm i mach-latest     # install Mach's latest nominated Zig
+zvm vmu zig default   # switch back to official releases
+```
+
+See [Version Maps](/reference/version-maps/) for custom maps, ZLS maps, and
+mirror lists.

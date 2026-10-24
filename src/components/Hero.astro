@@ -1,22 +1,32 @@
 ---
 import InstallTabs from './InstallTabs.astro';
-import { Image } from 'astro:assets';
-import logo from '../assets/zvm400x400.webp';
+
+// A short session showing the three things ZVM does: install, switch, and follow the project.
+const session = [
+  { kind: 'cmd', text: 'zvm i master --zls' },
+  { kind: 'cmd', text: 'zvm use 0.15.2' },
+  { kind: 'cmd', text: 'zig version' },
+  { kind: 'out', text: '0.15.2' },
+  { kind: 'note', text: '# build.zig pins 0.14.1' },
+  { kind: 'cmd', text: 'cd ~/old-game' },
+  { kind: 'cmd', text: 'zig version' },
+  { kind: 'out', text: '0.14.1' },
+];
 ---
 
-<div class="custom-hero">
+<section class="custom-hero not-content">
   <div class="hero-content">
-    <h1>Zig Version Manager</h1>
+    <h1>Run the Zig your project expects.</h1>
     <p class="description">
-      ZVM lets you easily install and switch between different versions of Zig.
-      Whether you're on Windows, macOS, Linux, BSD, or Plan 9 — manage multiple
-      Zig installations with a single command.
+      ZVM installs any Zig release or nightly, switches between them per shell,
+      and picks the right one when you enter a project. It's one static binary
+      for Linux, macOS, Windows, BSD, and Plan 9.
     </p>
-    <div class="install-section">
-      <InstallTabs />
-    </div>
-    <div class="hero-buttons">
-      <a href="/guides/install-zvm/" class="button primary" data-ph-event="cta_getting_started">Getting Started</a>
+    <InstallTabs />
+    <div class="hero-links">
+      <a href="/guides/install-zvm/" class="button primary" data-ph-event="cta_getting_started">
+        Read the install guide
+      </a>
       <a
         href="https://github.com/tristanisham/zvm"
         class="button secondary"
@@ -24,27 +34,30 @@ import logo from '../assets/zvm400x400.webp';
         rel="noopener noreferrer"
         data-ph-event="cta_github_repo"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
         </svg>
-        GitHub
+        Source on GitHub
       </a>
     </div>
   </div>
-  <div class="hero-logo">
-    <Image src={logo} alt="ZVM Logo" width={300} height={300} />
-  </div>
-</div>
+
+  <figure class="sticker" aria-label="Example terminal session">
+    <div class="session">
+      {session.map((line, i) => (
+        <div class={`line ${line.kind}`} style={`--i: ${i}`}>{line.kind === 'cmd' && <span class="ps" aria-hidden="true">$ </span>}{line.text}</div>
+      ))}
+    </div>
+  </figure>
+</section>
 
 <style>
   .custom-hero {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 3rem;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: clamp(2.5rem, 5vw, 5rem);
     align-items: center;
-    padding: 4rem 0;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 6vw, 4.5rem);
   }
 
   .hero-content {
@@ -54,105 +67,144 @@ import logo from '../assets/zvm400x400.webp';
   }
 
   h1 {
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-family: var(--zvm-font-display);
+    font-size: clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem);
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1.04;
+    letter-spacing: -0.025em;
     margin: 0;
     color: var(--sl-color-white);
+    text-wrap: balance;
   }
 
   .description {
-    font-size: 1.1rem;
+    font-size: var(--sl-text-lg);
+    line-height: 1.6;
     color: var(--sl-color-gray-2);
     margin: 0;
-    line-height: 1.6;
-    max-width: 600px;
+    max-width: 34em;
   }
 
-  .install-section {
+  .hero-links {
     display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .install-section :global(.install-tabs) {
-    margin: 0;
-  }
-
-  .hero-buttons {
-    display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
   }
 
   .button {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: 700;
     text-decoration: none;
-    transition: background 0.2s ease, transform 0.2s ease;
   }
 
   .button.primary {
-    background: var(--sl-color-accent);
-    color: var(--sl-color-black);
+    padding: 0.7rem 1.25rem;
+    border-radius: 999px;
+    border: 2px solid var(--zvm-ink);
+    background: var(--zvm-orange);
+    color: var(--zvm-ink);
+    box-shadow: 3px 3px 0 var(--zvm-ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
   }
 
   .button.primary:hover {
-    background: var(--sl-color-accent-high);
-    transform: translateY(-1px);
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 var(--zvm-ink);
+  }
+
+  .button.primary:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--zvm-ink);
   }
 
   .button.secondary {
-    background: var(--sl-color-gray-6);
     color: var(--sl-color-white);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.25em;
   }
 
   .button.secondary:hover {
-    background: var(--sl-color-gray-5);
-    transform: translateY(-1px);
+    text-decoration-thickness: 2px;
   }
 
-  .hero-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* The sticker: an ink-outlined terminal with the logo's stacked orange and ember shadows. */
+  .sticker {
+    margin: 0 1.5rem 1.5rem 0;
+    border: 3px solid var(--zvm-ink);
+    border-radius: 1.25rem;
+    background: var(--zvm-ink);
+    box-shadow:
+      10px 10px 0 0 var(--zvm-orange),
+      10px 10px 0 3px var(--zvm-ink),
+      20px 20px 0 0 var(--zvm-ember),
+      20px 20px 0 3px var(--zvm-ink);
+    transform: rotate(-1.5deg);
   }
 
-  .hero-logo img {
-    max-width: 300px;
-    height: auto;
+  .session {
+    padding: 1.5rem 1.6rem;
+    overflow: hidden;
+    font-family: var(--__sl-font-mono);
+    font-size: clamp(0.8rem, 0.72rem + 0.3vw, 0.95rem);
+    line-height: 1.85;
+    color: var(--zvm-cream);
   }
 
-  @media (max-width: 900px) {
+  .line {
+    display: block;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    /* Hidden until its turn; after the delay the line falls back to its normal, visible style. */
+    animation: wait-turn 0s backwards;
+    animation-delay: calc(var(--i) * 280ms + 300ms);
+  }
+
+  :global([data-theme='dark']) .sticker {
+    border-color: var(--sl-color-gray-5);
+  }
+
+  .ps {
+    color: var(--zvm-orange);
+  }
+
+  .out {
+    color: hsl(36, 30%, 66%);
+  }
+
+  .note {
+    color: hsl(30, 10%, 55%);
+  }
+
+  @keyframes wait-turn {
+    from,
+    to {
+      visibility: hidden;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .line {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 960px) {
     .custom-hero {
-      grid-template-columns: 1fr;
-      text-align: center;
-      padding: 2rem 0;
+      grid-template-columns: minmax(0, 1fr);
     }
 
-    .hero-content {
-      align-items: center;
-    }
-
-    .hero-logo {
-      order: -1;
-    }
-
-    .hero-logo img {
-      max-width: 200px;
-    }
-
-    .description {
-      text-align: center;
-    }
-
-    .hero-buttons {
-      justify-content: center;
+    .sticker {
+      transform: none;
+      box-shadow:
+        6px 6px 0 0 var(--zvm-orange),
+        6px 6px 0 3px var(--zvm-ink),
+        12px 12px 0 0 var(--zvm-ember),
+        12px 12px 0 3px var(--zvm-ink);
+      margin: 0 0.75rem 0.75rem 0;
     }
   }
 </style>

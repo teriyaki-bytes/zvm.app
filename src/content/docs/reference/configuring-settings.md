@@ -3,6 +3,13 @@ title: Configuring Settings
 description: How to configure ZVM settings, environment variables, and option flags.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/configuring-settings.webp" aria-label="Terminal recording: zvm settings prints one value, then opens the interactive settings editor">
+    <source src="/videos/configuring-settings.webm" type="video/webm" />
+    <source src="/videos/configuring-settings.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ZVM v0.9.4 stores settings in `~/.zvm/settings.json`, or
 `$ZVM_PATH/settings.json` when you set a custom directory. Use `zvm settings`
 to edit them, or change the JSON file directly. ZVM creates the file if it

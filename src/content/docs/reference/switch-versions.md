@@ -3,6 +3,13 @@ title: Switch Versions
 description: How to switch between installed Zig versions using ZVM.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/switch-versions.webp" aria-label="Terminal recording: zvm use switches between Zig 0.14.1 and 0.15.2, and zig version confirms each switch">
+    <source src="/videos/switch-versions.webm" type="video/webm" />
+    <source src="/videos/switch-versions.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ```sh
 zvm use <version>
 ```

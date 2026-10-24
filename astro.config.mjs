@@ -9,6 +9,12 @@ export default defineConfig({
     starlight({
       plugins: [starlightBlog()],
       title: "zvm | Zig Version Manager",
+      customCss: [
+        "@fontsource-variable/unbounded",
+        "@fontsource-variable/atkinson-hyperlegible-next",
+        "@fontsource-variable/jetbrains-mono",
+        "./src/styles/theme.css",
+      ],
       social: [
         {
           icon: "github",
@@ -23,10 +29,17 @@ export default defineConfig({
       ],
 
       logo: {
-        light: "./src/assets/zvm-text-logo-light.png",
-        dark: "./src/assets/zvm-text-logo-dark.png",
+        src: "./src/assets/zvm-logo.png",
+        alt: "ZVM",
         replacesTitle: true,
       },
+      favicon: "/favicon.png",
+      head: [
+        {
+          tag: "link",
+          attrs: { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+        },
+      ],
       sidebar: [
         {
           label: "Guides",
@@ -47,6 +60,7 @@ export default defineConfig({
       components: {
         Head: "./src/layouts/PostHogLayout.astro",
         Footer: "./src/components/PreviewFooter.astro",
+        SocialIcons: "./src/components/SocialIcons.astro",
       },
     }),
   ],

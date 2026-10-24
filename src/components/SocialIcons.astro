@@ -1,0 +1,42 @@
+---
+import DefaultSocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+import { ZVM_VERSION } from '../lib/zvm-version';
+
+// Only documentation pages get the badge; the landing page and blog don't.
+const isDocs = /^\/(guides|reference)\//.test(Astro.url.pathname);
+---
+
+{
+  isDocs && (
+    <a
+      class="version-badge"
+      href="/reference/upgrade-zvm/"
+      title={`These docs cover ZVM v${ZVM_VERSION}. Upgrade ZVM if a documented command is missing.`}
+      data-ph-event="docs_version_badge"
+    >
+      Version {ZVM_VERSION}
+    </a>
+  )
+}
+<DefaultSocialIcons />
+
+<style>
+  .version-badge {
+    display: inline-flex;
+    align-items: center;
+    margin-inline-end: 0.75rem;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid var(--sl-color-gray-5);
+    border-radius: 0.4rem;
+    background: var(--sl-color-gray-6);
+    color: var(--sl-color-white);
+    font-size: var(--sl-text-sm);
+    font-weight: 600;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .version-badge:hover {
+    border-color: var(--sl-color-accent);
+  }
+</style>

@@ -78,6 +78,7 @@
       if (btn) {
         var code = btn.dataset.code || '';
         capture('code_copied', {
+          via: 'button',
           code: code.slice(0, 300),
           install_method: installMethod(code),
           zvm_command: zvmCommand(code),
@@ -100,6 +101,43 @@
           page: location.pathname
         });
       }
+    });
+
+    // Copies made by selecting text (keyboard or context menu). Button copies
+    // write to the clipboard directly and never fire this event.
+    document.addEventListener('copy', function (e) {
+      var selection = window.getSelection();
+      var text = selection ? selection.toString().trim() : '';
+      if (!text || !selection.anchorNode) return;
+      var node = selection.anchorNode.nodeType === 1 ? selection.anchorNode : selection.anchorNode.parentElement;
+      if (!node || !node.closest) return;
+
+      // The homepage install box reports its own copies as install_command_copied.
+      if (node.closest('.install-tabs')) return;
+
+      if (node.closest('.expressive-code pre')) {
+        capture('code_copied', {
+          via: 'selection',
+          code: text.slice(0, 300),
+          install_method: installMethod(text),
+          zvm_command: zvmCommand(text),
+          page: location.pathname
+        });
+        return;
+      }
+
+      var heading = null;
+      var headings = document.querySelectorAll('main h1, main h2, main h3');
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].compareDocumentPosition(node) & Node.DOCUMENT_POSITION_FOLLOWING) heading = headings[i];
+      }
+      capture('text_copied', {
+        text: text.slice(0, 300),
+        length: text.length,
+        is_inline_code: !!node.closest('code'),
+        heading: heading ? heading.textContent.trim().slice(0, 100) : null,
+        page: location.pathname
+      });
     });
 
     // Starlight's Pagefind search lives inside <site-search>. Debounce so we

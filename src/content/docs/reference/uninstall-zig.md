@@ -3,6 +3,13 @@ title: Uninstall Zig
 description: How to uninstall Zig versions using ZVM.
 ---
 
+<figure class="terminal-demo">
+  <video autoplay loop muted playsinline preload="metadata" poster="/videos/uninstall-zig.webp" aria-label="Terminal recording: zvm rm removes Zig 0.13.0 and frees its space in the dedupe store">
+    <source src="/videos/uninstall-zig.webm" type="video/webm" />
+    <source src="/videos/uninstall-zig.mp4" type="video/mp4" />
+  </video>
+</figure>
+
 ```sh
 # Examples
 zvm rm 0.10.0      # remove an exact version
